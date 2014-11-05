@@ -29,6 +29,7 @@
 #include "usbh_core.h"
 #include "usbh_usr.h"
 #include "usbh_msc_core.h"
+#include "usbh_adk_core.h"
 
 /** @addtogroup USBH_USER
 * @{
@@ -103,6 +104,9 @@ __ALIGN_BEGIN USBH_HOST                USB_Host __ALIGN_END;
 int main(void)
 {
   __IO uint32_t i = 0;
+
+    uint8_t msg[2];
+    uint16_t len;
   
   /*!< At this stage the microcontroller clock setting is already configured, 
   this is done through SystemInit() function which is called from startup
@@ -125,23 +129,43 @@ int main(void)
             USB_OTG_HS_CORE_ID,
 #endif 
             &USB_Host,
-            &USBH_MSC_cb, 
+            &USBH_ADK_cb, 
             &USR_cb);
 
-  USB_OTG_BSP_mDelay(5);			
+  /* Init ADK Library */
+ USBH_ADK_Init("ammlab.org", "HelloADK", "HelloADK for for STM32F4", "1.0", "www.actnova",  "1234567");
+
+			
   
   while (1)
   {
     /* Host Task handler */
     USBH_Process(&USB_OTG_Core, &USB_Host);
+
+	USBH_ADK_read(&USB_OTG_Core, msg, sizeof(msg));
+
+
+    /* Accessory Mode enabled */
+    if( USBH_ADK_getStatus() == ADK_IDLE) {
+	/* --------------------------------------------------------------------------- */
+    	// in
+    	len = USBH_ADK_read(&USB_OTG_Core, msg, sizeof(msg));
+    	if( len > 0 ){
+    		if( msg[0] == 0x1){
+    			if( msg[1] == 0x1) {
+    				STM_EVAL_LEDOn(LED1);
+    			}else{
+    				STM_EVAL_LEDOff(LED1);
+    			}
+    		}
+    	}
+	}
+
     
     if (i++ == 0x10000)
     {
-      STM_EVAL_LEDToggle(LED1);
-      STM_EVAL_LEDToggle(LED2);
-      STM_EVAL_LEDToggle(LED3);
-      STM_EVAL_LEDToggle(LED4);
-      i = 0;
+		USBH_ADK_write(&USB_OTG_Core, msg, sizeof(msg));
+        i = 0;
     }      
   }
 }

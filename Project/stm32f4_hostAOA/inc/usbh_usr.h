@@ -118,6 +118,11 @@ void USBH_USR_DeviceNotSupported(void);
 void USBH_USR_UnrecoveredError(void);
 int USBH_USR_MSC_Application(void);
 
+
+
+/**adk*/
+int USBH_USR_ADK_Application(void);
+
 /**
   * @}
   */ 

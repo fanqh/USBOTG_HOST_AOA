@@ -88,6 +88,7 @@ uint8_t line_idx = 0;
 /*  Points to the DEVICE_PROP structure of current device */
 /*  The purpose of this register is to speed up the execution */
 
+ #if 0
 USBH_Usr_cb_TypeDef USR_cb =
 {
   USBH_USR_Init,
@@ -110,6 +111,32 @@ USBH_Usr_cb_TypeDef USR_cb =
   USBH_USR_UnrecoveredError
     
 };
+#else
+USBH_Usr_cb_TypeDef USR_cb =
+{
+
+  USBH_USR_Init,							/* HostLibInitialized */
+  USBH_USR_DeInit,							/* HostLibInitialized */  
+  USBH_USR_DeviceAttached,					/* DeviceAttached */
+  USBH_USR_ResetDevice,	
+  USBH_USR_DeviceDisconnected,
+  USBH_USR_OverCurrentDetected,
+  USBH_USR_DeviceSpeedDetected,				/* DeviceSpeed */
+  USBH_USR_Device_DescAvailable,			/* DeviceDescriptor is available */
+  USBH_USR_DeviceAddressAssigned,			/* Address is assigned to USB Device */
+  USBH_USR_Configuration_DescAvailable,		/* Configuration Descriptor available */
+  USBH_USR_Manufacturer_String,				/* ManufacturerString*/
+  USBH_USR_Product_String,					/* ProductString*/
+  USBH_USR_SerialNum_String,				/* SerialNubString*/
+  USBH_USR_EnumerationDone,					/* Enumeration finished */
+  USBH_USR_UserInput,
+  USBH_USR_ADK_Application,
+  USBH_USR_DeviceNotSupported,				/* Device is not supported*/
+  USBH_USR_UnrecoveredError
+
+};
+#endif
+
 
 /**
 * @}
@@ -347,6 +374,11 @@ void USBH_USR_Configuration_DescAvailable(USBH_CfgDesc_TypeDef * cfgDesc,
     //LCD_UsrLog((void *)MSG_HID_CLASS);
 	printf("%s\r\n",(void *)MSG_HID_CLASS);
   }    
+
+  //add by fan
+
+  printf("Interface : %02X %02X\r\n", (uint8_t)(*id).bInterfaceClass, (uint8_t)(*id).bInterfaceSubClass);
+  printf("Power info: bmAttributes:0x%02X, bMaxPower:%d\r\n",cfgDesc->bmAttributes, cfgDesc->bMaxPower );
 }
 
 /**
@@ -404,8 +436,8 @@ void USBH_USR_EnumerationDone(void)
   //LCD_DisplayStringLine( LCD_PIXEL_HEIGHT - 42, "To see the root content of the disk : " );
   //LCD_DisplayStringLine( LCD_PIXEL_HEIGHT - 30, "Press Key...                       ");
   //LCD_SetTextColor(LCD_LOG_DEFAULT_COLOR);
-  printf("To see the root content of the disk : \r\n");
-  printf("Press Key...\r\n"); 
+//  printf("To see the root content of the disk : \r\n");
+//  printf("Press Key...\r\n"); 
   
 } 
 
@@ -803,6 +835,26 @@ void USBH_USR_DeInit(void)
   USBH_USR_ApplicationState = USH_USR_FS_INIT;
 }
 
+
+
+
+
+
+
+
+  /**
+* @brief  USBH_USR_ADK_Application
+*         Application for ADK
+* @param  None
+* @retval Staus
+*/
+int USBH_USR_ADK_Application(void)
+{
+#ifdef DEBUG
+	  xputs("> USBH_USR_ADK_Application\n");
+#endif
+  return(0);
+}
 
 /**
 * @}

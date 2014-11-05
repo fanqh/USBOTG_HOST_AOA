@@ -476,6 +476,11 @@
               <FileType>1</FileType>
               <FilePath>..\..\..\Libraries\STM32_USB_HOST_Library\Class\MSC\src\usbh_msc_fatfs.c</FilePath>
             </File>
+            <File>
+              <FileName>usbh_adk_core.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\src\usbh_adk_core.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>

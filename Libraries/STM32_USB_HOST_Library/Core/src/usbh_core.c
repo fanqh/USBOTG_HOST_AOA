@@ -308,7 +308,7 @@ void USBH_Process(USB_OTG_CORE_HANDLE *pdev , USBH_HOST *phost)
     /*The function should return user response true to move to class state */
     if ( phost->usr_cb->UserInput() == USBH_USR_RESP_OK)
     {
-	printf("HOST_USR_INPUT state : user_input is ok");
+ 	  printf("HOST_USR_INPUT state : user_input is ok");
       if((phost->class_cb->Init(pdev, phost))\
         == USBH_OK)
       {
@@ -323,7 +323,7 @@ void USBH_Process(USB_OTG_CORE_HANDLE *pdev , USBH_HOST *phost)
     
      if(status == USBH_OK)
      {
-	   printf("HOST_CLASS_REQUEST state : contol requests is ok and host class is enter");
+	   printf("HOST_CLASS_REQUEST state : contol requests is ok and host class is enter\r\n");
        phost->gState  = HOST_CLASS;
      }  
      
