@@ -141,7 +141,7 @@ static USB_OTG_STS USB_OTG_CoreReset(USB_OTG_CORE_HANDLE *pdev)
   /* Core Soft Reset */
   count = 0;
   greset.b.csftrst = 1;
-  USB_OTG_WRITE_REG32(&pdev->regs.GREGS->GRSTCTL, greset.d32 );
+  USB_OTG_WRITE_REG32(&pdev->regs.GREGS->GRSTCTL, 0 );
   do
   {
     greset.d32 = USB_OTG_READ_REG32(&pdev->regs.GREGS->GRSTCTL);
@@ -982,13 +982,14 @@ USB_OTG_STS USB_OTG_HC_StartXfer(USB_OTG_CORE_HANDLE *pdev , uint8_t hc_num)
   hcchar.d32 = 0;
   intmsk.d32 = 0;
   
+ 
   /* Compute the expected number of packets associated to the transfer */
   if (pdev->host.hc[hc_num].xfer_len > 0)
   {
-    num_packets = (pdev->host.hc[hc_num].xfer_len + \
-      pdev->host.hc[hc_num].max_packet - 1) / pdev->host.hc[hc_num].max_packet;
+      num_packets = (pdev->host.hc[hc_num].xfer_len + \
+      pdev->host.hc[hc_num].max_packet - 1) / pdev->host.hc[hc_num].max_packet;	  //求出要发送的数据可分为几个packet
     
-    if (num_packets > max_hc_pkt_count)
+    if (num_packets > max_hc_pkt_count)	  //如果packet个数超过所定义的值，算出要发送的字节个数
     {
       num_packets = max_hc_pkt_count;
       pdev->host.hc[hc_num].xfer_len = num_packets * \
@@ -997,14 +998,14 @@ USB_OTG_STS USB_OTG_HC_StartXfer(USB_OTG_CORE_HANDLE *pdev , uint8_t hc_num)
   }
   else
   {
-    num_packets = 1;
+    num_packets = 1;	 //如果要发送的字节长度为0，发送1个包
   }
-  if (pdev->host.hc[hc_num].ep_is_in)
+  if (pdev->host.hc[hc_num].ep_is_in)	 //	URB idle状态，算出发送的字节数
   {
-    pdev->host.hc[hc_num].xfer_len = num_packets * \
+    pdev->host.hc[hc_num].xfer_len = num_packets * 	
       pdev->host.hc[hc_num].max_packet;
   }
-  /* Initialize the HCTSIZn register */
+  /* Initialize the HCTSIZn register */	//要发送的字节数，包数，数据类型寄存器
   hctsiz.b.xfersize = pdev->host.hc[hc_num].xfer_len;
   hctsiz.b.pktcnt = num_packets;
   hctsiz.b.pid = pdev->host.hc[hc_num].data_pid;
@@ -1012,6 +1013,7 @@ USB_OTG_STS USB_OTG_HC_StartXfer(USB_OTG_CORE_HANDLE *pdev , uint8_t hc_num)
   
   if (pdev->cfg.dma_enable == 1)
   {
+//  	printf("dma_enable is true\r\n");
     USB_OTG_WRITE_REG32(&pdev->regs.HC_REGS[hc_num]->HCDMA, (unsigned int)pdev->host.hc[hc_num].xfer_buff);
   }
   
@@ -1034,7 +1036,8 @@ USB_OTG_STS USB_OTG_HC_StartXfer(USB_OTG_CORE_HANDLE *pdev , uint8_t hc_num)
         /* Non periodic transfer */
       case EP_TYPE_CTRL:
       case EP_TYPE_BULK:
-        
+
+		//printf("ep_type_bulk\r\n");        
         hnptxsts.d32 = USB_OTG_READ_REG32(&pdev->regs.GREGS->HNPTXSTS);
         len_words = (pdev->host.hc[hc_num].xfer_len + 3) / 4;
         
@@ -1050,6 +1053,8 @@ USB_OTG_STS USB_OTG_HC_StartXfer(USB_OTG_CORE_HANDLE *pdev , uint8_t hc_num)
         /* Periodic transfer */
       case EP_TYPE_INTR:
       case EP_TYPE_ISOC:
+
+//	  printf("ep_type_intr\r\n");
         hptxsts.d32 = USB_OTG_READ_REG32(&pdev->regs.HREGS->HPTXSTS);
         len_words = (pdev->host.hc[hc_num].xfer_len + 3) / 4;
         /* check if there is enough space in FIFO space */

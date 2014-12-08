@@ -139,6 +139,7 @@ uint32_t USBH_OTG_ISR_Handler (USB_OTG_CORE_HANDLE *pdev)
     if (gintsts.b.rxstsqlvl)
     {
       retval |= USB_OTG_USBH_handle_rx_qlvl_ISR (pdev);
+	 // printf("rx ifq is arrived\r\n");
     }
     
     if (gintsts.b.nptxfempty)

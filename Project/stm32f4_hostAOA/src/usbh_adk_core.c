@@ -32,6 +32,9 @@
 #include <string.h>
 
 
+#include "printf32_reg.h"
+
+
 #define DEBUG
 
 /** @defgroup USBH_ADK_CORE_Private_Variables
@@ -123,7 +126,7 @@ static USBH_Status USBH_ADK_InterfaceInit ( USB_OTG_CORE_HANDLE *pdev, void *pho
 	ADK_Machine.outSize = 0;
 
 #ifdef DEBUG
-	printf("> USB_ADK_Init\n");
+	printf("> USB_ADK_Init\r\n");
 #endif
 	return status ;
 }
@@ -139,15 +142,15 @@ void USBH_ADK_InterfaceDeInit ( USB_OTG_CORE_HANDLE *pdev, void *phost)
 {
 
 #ifdef DEBUG
-	printf("> USB_ADK_DeInit\n");
+	printf("> USB_ADK_DeInit\r\n");
 #endif
 	ADK_Machine.initstate = ADK_INIT_SETUP;
 
 	/* Switch to accessory mode,  Re-enumeration */
-//	if(ADK_Machine.state == ADK_INITIALIZING)
-//	{
-//		pdev->host.ConnSts = 1;
-//	}
+	if(ADK_Machine.state == ADK_INITIALIZING)
+	{
+		pdev->host.ConnSts = 1;
+	}
 
 	/* close bulk transfer pipe */
 	if ( ADK_Machine.hc_num_out)
@@ -183,22 +186,25 @@ static USBH_Status USBH_ADK_ClassRequest(USB_OTG_CORE_HANDLE *pdev, void *phost)
 	{
 		case ADK_INIT_SETUP:
 
-		printf("USB_ADK_ClassRequest\r\n");
+		//printf("USB_ADK_ClassRequest\r\n");
 #ifdef DEBUG
-			printf("> USB_ADK_ClassRequest\n");
+			printf("> USB_ADK_ClassRequest\r\n");
 #endif
+
 			// minimize NAK retry limit
 //		  	pdev->host.NakRetryLimit = USBH_ADK_NAK_RETRY_LIMIT;
 
 		  	//check vaild device
 			if(pphost->device_prop.Dev_Desc.idVendor == USB_ACCESSORY_VENDOR_ID &&
 			   (pphost->device_prop.Dev_Desc.idProduct == USB_ACCESSORY_PRODUCT_ID ||
-			    pphost->device_prop.Dev_Desc.idProduct == USB_ACCESSORY_ADB_PRODUCT_ID)
-		    ){
+			    pphost->device_prop.Dev_Desc.idProduct == USB_ACCESSORY_ADB_PRODUCT_ID))
+			{
 				ADK_Machine.initstate = ADK_INIT_CONFIGURE_ANDROID;
-			}else{
+			}
+			else
+			{
 				ADK_Machine.initstate = ADK_INIT_GET_PROTOCOL;
-				ADK_Machine.protocol = -1;
+				ADK_Machine.protocol = -1;	//为什么写了个-1
 			}
 			break;
 
@@ -207,9 +213,11 @@ static USBH_Status USBH_ADK_ClassRequest(USB_OTG_CORE_HANDLE *pdev, void *phost)
 				if (ADK_Machine.protocol >= 1) {
 					ADK_Machine.initstate = ADK_INIT_SEND_MANUFACTURER;
 #ifdef DEBUG
-					printf("ADK:device supports protcol 1\n");
+					printf("ADK:device supports protcol 1 \r\n");
 #endif
-				} else {
+				}
+				else 
+				{
 					ADK_Machine.initstate = ADK_INIT_FAILED;
 		#ifdef DEBUG
 					printf("ADK:could not read device protocol version\n");
@@ -221,7 +229,7 @@ static USBH_Status USBH_ADK_ClassRequest(USB_OTG_CORE_HANDLE *pdev, void *phost)
 			if( USBH_ADK_sendString ( pdev, phost, ACCESSORY_STRING_MANUFACTURER, (uint8_t*)ADK_Machine.acc_manufacturer)== USBH_OK ){
 				ADK_Machine.initstate = ADK_INIT_SEND_MODEL;
 #ifdef DEBUG
-					printf("ADK:SEND_MANUFACTURER\n");
+					printf("ADK:SEND_MANUFACTURER\r\n");
 #endif
 			}
 			break;
@@ -229,7 +237,7 @@ static USBH_Status USBH_ADK_ClassRequest(USB_OTG_CORE_HANDLE *pdev, void *phost)
 			if( USBH_ADK_sendString ( pdev, phost, ACCESSORY_STRING_MODEL, (uint8_t*)ADK_Machine.acc_model)== USBH_OK ){
 				ADK_Machine.initstate = ADK_INIT_SEND_DESCRIPTION;
 #ifdef DEBUG
-					printf("ADK:SEND_MODEL\n");
+					printf("ADK:SEND_MODEL\r\n");
 #endif
 			}
 			break;
@@ -237,7 +245,7 @@ static USBH_Status USBH_ADK_ClassRequest(USB_OTG_CORE_HANDLE *pdev, void *phost)
 			if( USBH_ADK_sendString ( pdev, phost, ACCESSORY_STRING_DESCRIPTION, (uint8_t*)ADK_Machine.acc_description)== USBH_OK ){
 				ADK_Machine.initstate = ADK_INIT_SEND_VERSION;
 #ifdef DEBUG
-					printf("ADK:SEND_DESCRIPTION\n");
+					printf("ADK:SEND_DESCRIPTION\r\n");
 #endif
 			}
 			break;
@@ -245,7 +253,7 @@ static USBH_Status USBH_ADK_ClassRequest(USB_OTG_CORE_HANDLE *pdev, void *phost)
 			if( USBH_ADK_sendString ( pdev, phost, ACCESSORY_STRING_VERSION, (uint8_t*)ADK_Machine.acc_version)== USBH_OK ){
 				ADK_Machine.initstate = ADK_INIT_SEND_URI;
 #ifdef DEBUG
-					printf("ADK:SEND_VERSION\n");
+					printf("ADK:SEND_VERSION\r\n");
 #endif
 			}
 			break;
@@ -253,7 +261,7 @@ static USBH_Status USBH_ADK_ClassRequest(USB_OTG_CORE_HANDLE *pdev, void *phost)
 			if( USBH_ADK_sendString ( pdev, phost, ACCESSORY_STRING_URI, (uint8_t*)ADK_Machine.acc_uri)== USBH_OK ){
 				ADK_Machine.initstate = ADK_INIT_SEND_SERIAL;
 #ifdef DEBUG
-					printf("ADK:SEND_URI\n");
+					printf("ADK:SEND_URI\r\n");
 #endif
 			}
 			break;
@@ -261,7 +269,7 @@ static USBH_Status USBH_ADK_ClassRequest(USB_OTG_CORE_HANDLE *pdev, void *phost)
 			if( USBH_ADK_sendString ( pdev, phost, ACCESSORY_STRING_SERIAL, (uint8_t*)ADK_Machine.acc_serial)== USBH_OK ){
 				ADK_Machine.initstate = ADK_INIT_SWITCHING;
 #ifdef DEBUG
-					printf("ADK:SEND_SERIAL\n");
+					printf("ADK:SEND_SERIAL\r\n");
 #endif
 			}
 			break;
@@ -269,22 +277,25 @@ static USBH_Status USBH_ADK_ClassRequest(USB_OTG_CORE_HANDLE *pdev, void *phost)
 			if( USBH_ADK_switch ( pdev, phost)== USBH_OK ){
 				ADK_Machine.initstate = ADK_INIT_GET_DEVDESC;
 #ifdef DEBUG
-					printf("ADK:switch to accessory mode\n");
+					printf("ADK:switch to accessory mode\r\n");
 #endif
 			}
 			break;
 
 	  case ADK_INIT_GET_DEVDESC:
-			if( USBH_Get_DevDesc(pdev , phost, USB_DEVICE_DESC_SIZE)== USBH_OK ){
+			if( USBH_Get_DevDesc(pdev , phost, USB_DEVICE_DESC_SIZE)== USBH_OK )
+			{
 				ADK_Machine.initstate = ADK_INIT_DONE;
 				ADK_Machine.pid = pphost->device_prop.Dev_Desc.idProduct;
 				//check vaild device
 				if(pphost->device_prop.Dev_Desc.idVendor == USB_ACCESSORY_VENDOR_ID &&
 				   (pphost->device_prop.Dev_Desc.idProduct == USB_ACCESSORY_PRODUCT_ID ||
-				    pphost->device_prop.Dev_Desc.idProduct == USB_ACCESSORY_ADB_PRODUCT_ID)
-			    ){
+				    pphost->device_prop.Dev_Desc.idProduct == USB_ACCESSORY_ADB_PRODUCT_ID))
+				{
 					ADK_Machine.initstate = ADK_INIT_CONFIGURE_ANDROID;
-				}else{
+				}
+				else
+				{
 					ADK_Machine.initstate = ADK_INIT_FAILED;
 				}
 			}
@@ -331,7 +342,8 @@ static USBH_Status USBH_ADK_Handle(USB_OTG_CORE_HANDLE *pdev, void   *phost)
 	switch (ADK_Machine.state)
 	{
 		case ADK_IDLE:
-			ADK_Machine.state = ADK_SEND_DATA;
+			ADK_Machine.state = ADK_SEND_DATA;//ADK_GET_DATA;//	 发送接受需要修改
+			break;
 
 		case ADK_SEND_DATA:
 			URB_Status = HCD_GetURB_State(pdev , ADK_Machine.hc_num_out);
@@ -341,11 +353,14 @@ static USBH_Status USBH_ADK_Handle(USB_OTG_CORE_HANDLE *pdev, void   *phost)
 			if(ADK_Machine.outSize > 0){
 				USBH_BulkSendData(pdev, ADK_Machine.outbuff, ADK_Machine.outSize, ADK_Machine.hc_num_out);
 				ADK_Machine.outSize = 0;
-				ADK_Machine.state = ADK_GET_DATA;
+			//	ADK_Machine.state = ADK_GET_DATA;	 //应该放在条件外
 			}
+
+			ADK_Machine.state = ADK_GET_DATA;	 //应该放在条件外
 			break;
 
 		case ADK_GET_DATA:
+		 	//printf("ADK_GET_DATA");
 			URB_Status = HCD_GetURB_State(pdev , ADK_Machine.hc_num_in);
 			HCD_Status = HCD_GetHCState(pdev , ADK_Machine.hc_num_in);
 			HCD_GXferCnt = HCD_GetXferCnt(pdev , ADK_Machine.hc_num_in);
@@ -501,6 +516,25 @@ USBH_Status USBH_ADK_write(USB_OTG_CORE_HANDLE *pdev, uint8_t *buff, uint16_t le
 	return USBH_OK;
 }
 
+USBH_Status USBH_ADK_send(USB_OTG_CORE_HANDLE *pdev, uint8_t *buff, uint16_t len)
+{
+	URB_STATE URB_Status;
+	HC_STATUS HCD_Status;
+	uint32_t HCD_GXferCnt;
+
+	URB_Status = HCD_GetURB_State(pdev , ADK_Machine.hc_num_out);
+	HCD_Status = HCD_GetHCState(pdev , ADK_Machine.hc_num_out);
+	HCD_GXferCnt = HCD_GetXferCnt(pdev , ADK_Machine.hc_num_out);
+
+	if(len > 0){
+		USBH_BulkSendData(pdev, buff, len, ADK_Machine.hc_num_out);
+//		ADK_Machine.outSize = 0;
+		ADK_Machine.state = ADK_GET_DATA;	 //修改
+	}
+	return USBH_OK;
+}
+
+
 /**
   * @brief  USBH_ADK_read
   *         Receive data from  Android device.
@@ -509,6 +543,7 @@ USBH_Status USBH_ADK_write(USB_OTG_CORE_HANDLE *pdev, uint8_t *buff, uint16_t le
   * @param  len : receive data buffer length
   * @retval received data length
   */
+# if 0
 uint16_t USBH_ADK_read(USB_OTG_CORE_HANDLE *pdev, uint8_t *buff, uint16_t len)
 {
 	uint32_t xfercount;
@@ -518,6 +553,38 @@ uint16_t USBH_ADK_read(USB_OTG_CORE_HANDLE *pdev, uint8_t *buff, uint16_t len)
 		ADK_Machine.inSize = 0;
 	}
 	return (uint16_t)xfercount;
+}
+
+#else 
+uint16_t USBH_ADK_read(USB_OTG_CORE_HANDLE *pdev, uint8_t *buff, uint16_t len)
+{
+	uint32_t xfercount;
+	uint32_t l = 0;
+
+	xfercount = HCD_GetXferCnt(pdev, ADK_Machine.hc_num_in);
+	if( xfercount >= len ){
+	   
+	    l = len;
+		memcpy(buff, ADK_Machine.inbuff, len);
+		ADK_Machine.inSize = 0;
+	}
+	else if(xfercount !=0)
+	{
+	 	l =   xfercount;
+		memcpy(buff, ADK_Machine.inbuff, xfercount);
+		ADK_Machine.inSize = 0;	
+	}																											                                                         
+	return (uint16_t)l;
+}
+
+#endif
+
+
+//added by fan
+
+void USBH_ADK_ClearCount(USB_OTG_CORE_HANDLE *pdev)
+{
+	HCD_ClearXferCnt(pdev, ADK_Machine.hc_num_in);
 }
 
 /**

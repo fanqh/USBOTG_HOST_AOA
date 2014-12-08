@@ -205,6 +205,14 @@ uint32_t HCD_GetXferCnt (USB_OTG_CORE_HANDLE *pdev, uint8_t ch_num)
   return pdev->host.XferCnt[ch_num] ;
 }
 
+//added by fan
+
+uint32_t HCD_ClearXferCnt(USB_OTG_CORE_HANDLE *pdev, uint8_t ch_num)
+{
+	pdev->host.XferCnt[ch_num] =0 ;
+	return 0;
+}
+
 
 
 /**
@@ -238,7 +246,7 @@ uint32_t HCD_HC_Init (USB_OTG_CORE_HANDLE *pdev , uint8_t hc_num)
   * @param  hc_num: Channel number 
   * @retval status
   */
-uint32_t HCD_SubmitRequest (USB_OTG_CORE_HANDLE *pdev , uint8_t hc_num) 
+uint32_t HCD_SubmitRequest (USB_OTG_CORE_HANDLE *pdev , uint8_t hc_num) 	 //
 {
   
   pdev->host.URB_State[hc_num] =   URB_IDLE;  

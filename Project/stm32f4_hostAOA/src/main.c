@@ -30,6 +30,8 @@
 #include "usbh_usr.h"
 #include "usbh_msc_core.h"
 #include "usbh_adk_core.h"
+#include "usart.h"
+
 
 /** @addtogroup USBH_USER
 * @{
@@ -101,11 +103,14 @@ __ALIGN_BEGIN USBH_HOST                USB_Host __ALIGN_END;
 * @param  None
 * @retval int
 */
+
+static uint32_t test = 0;
+
 int main(void)
 {
   __IO uint32_t i = 0;
 
-    uint8_t msg[2];
+    uint8_t msg[64];
     uint16_t len;
   
   /*!< At this stage the microcontroller clock setting is already configured, 
@@ -117,9 +122,8 @@ int main(void)
   
   /* Init Host Library */
 
-
+  USART_Configuration();
   
-
 
 
   USBH_Init(&USB_OTG_Core, 
@@ -133,40 +137,41 @@ int main(void)
             &USR_cb);
 
   /* Init ADK Library */
- USBH_ADK_Init("ammlab.org", "HelloADK", "HelloADK for for STM32F4", "1.0", "www.actnova",  "1234567");
-
-			
-  
+ USBH_ADK_Init("actnova", "HelloADK", "HelloADK for for STM32F4", "1.0", "www.actnova.com",  "1234567");
+//USBH_ADK_Init("ammlab.org", "HelloADK", "HelloADK for GR-SAKURA for STM32F4", "1.0", "https://play.google.com/store/apps/details?id=org.ammlab.android.helloadk",  "1234567");		
+//   USART_Configuration();
   while (1)
   {
+ 
     /* Host Task handler */
-    USBH_Process(&USB_OTG_Core, &USB_Host);
-
-	USBH_ADK_read(&USB_OTG_Core, msg, sizeof(msg));
-
+   USBH_Process(&USB_OTG_Core, &USB_Host);
 
     /* Accessory Mode enabled */
-    if( USBH_ADK_getStatus() == ADK_IDLE) {
-	/* --------------------------------------------------------------------------- */
-    	// in
-    	len = USBH_ADK_read(&USB_OTG_Core, msg, sizeof(msg));
-    	if( len > 0 ){
-    		if( msg[0] == 0x1){
-    			if( msg[1] == 0x1) {
-    				STM_EVAL_LEDOn(LED1);
-    			}else{
-    				STM_EVAL_LEDOff(LED1);
-    			}
-    		}
-    	}
-	}
+   if( USBH_ADK_getStatus() == ADK_IDLE) 
+   {
 
-    
-    if (i++ == 0x10000)
-    {
-		USBH_ADK_write(&USB_OTG_Core, msg, sizeof(msg));
-        i = 0;
-    }      
+	    len = USBH_ADK_read(&USB_OTG_Core, msg, sizeof(msg));
+		if(len>0)
+		{
+			USBH_ADK_ClearCount(&USB_OTG_Core);
+			for(i = 0; i< len; i++)
+			{
+				printf("%X ",msg[i]);
+	
+			}
+			printf("\r\n");
+		}
+  }
+//  USB_OTG_BSP_mDelay(10);
+
+ //  USBH_ADK_write(&USB_OTG_Core, "something ",1);   
+   
+   test++;
+   if(test >= 10000)
+   {
+   		test = 0;
+   		//printf("device is working\r\n");
+   } 
   }
 }
 
@@ -191,6 +196,25 @@ void assert_failed(uint8_t* file, uint32_t line)
 }
 #endif
 
+
+
+
+void reset_usb(void)
+{
+
+
+  USBH_Init(&USB_OTG_Core, 
+#ifdef USE_USB_OTG_FS  
+            USB_OTG_FS_CORE_ID,
+#else 
+            USB_OTG_HS_CORE_ID,
+#endif 
+            &USB_Host,
+            &USBH_ADK_cb, 
+            &USR_cb);
+
+	USBH_ADK_Init("actnova", "HelloADK", "HelloADK for for STM32F4", "1.0", "www.actnova.com",  "1234567");
+}
 
 /**
 * @}

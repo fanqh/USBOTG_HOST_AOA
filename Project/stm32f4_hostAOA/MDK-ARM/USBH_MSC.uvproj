@@ -416,6 +416,11 @@
               <FileType>1</FileType>
               <FilePath>..\src\usart.c</FilePath>
             </File>
+            <File>
+              <FileName>printf32_reg.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\src\printf32_reg.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -457,6 +462,11 @@
               <FilePath>..\..\..\Libraries\STM32_USB_OTG_Driver\src\usb_hcd.c</FilePath>
             </File>
             <File>
+              <FileName>usbh_adk_core.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\src\usbh_adk_core.c</FilePath>
+            </File>
+            <File>
               <FileName>usbh_msc_scsi.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\Libraries\STM32_USB_HOST_Library\Class\MSC\src\usbh_msc_scsi.c</FilePath>
@@ -475,11 +485,6 @@
               <FileName>usbh_msc_fatfs.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\Libraries\STM32_USB_HOST_Library\Class\MSC\src\usbh_msc_fatfs.c</FilePath>
-            </File>
-            <File>
-              <FileName>usbh_adk_core.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\src\usbh_adk_core.c</FilePath>
             </File>
           </Files>
         </Group>

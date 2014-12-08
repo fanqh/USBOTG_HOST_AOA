@@ -146,27 +146,27 @@ USBH_Usr_cb_TypeDef USR_cb =
 * @{
 */ 
 /*--------------- LCD Messages ---------------*/
-const uint8_t MSG_HOST_INIT[]        = "> Host Library Initialized\n";
-const uint8_t MSG_DEV_ATTACHED[]     = "> Device Attached \n";
-const uint8_t MSG_DEV_DISCONNECTED[] = "> Device Disconnected\n";
-const uint8_t MSG_DEV_ENUMERATED[]   = "> Enumeration completed \n";
-const uint8_t MSG_DEV_HIGHSPEED[]    = "> High speed device detected\n";
-const uint8_t MSG_DEV_FULLSPEED[]    = "> Full speed device detected\n";
-const uint8_t MSG_DEV_LOWSPEED[]     = "> Low speed device detected\n";
-const uint8_t MSG_DEV_ERROR[]        = "> Device fault \n";
+const uint8_t MSG_HOST_INIT[]        = "> Host Library Initialized\r\n";
+const uint8_t MSG_DEV_ATTACHED[]     = "> Device Attached \r\n";
+const uint8_t MSG_DEV_DISCONNECTED[] = "> Device Disconnected\r\n";
+const uint8_t MSG_DEV_ENUMERATED[]   = "> Enumeration completed \r\n";
+const uint8_t MSG_DEV_HIGHSPEED[]    = "> High speed device detected\r\n";
+const uint8_t MSG_DEV_FULLSPEED[]    = "> Full speed device detected\r\n";
+const uint8_t MSG_DEV_LOWSPEED[]     = "> Low speed device detected\r\n";
+const uint8_t MSG_DEV_ERROR[]        = "> Device fault \r\n";
 
-const uint8_t MSG_MSC_CLASS[]        = "> Mass storage device connected\n";
-const uint8_t MSG_HID_CLASS[]        = "> HID device connected\n";
-const uint8_t MSG_DISK_SIZE[]        = "> Size of the disk in MBytes: \n";
-const uint8_t MSG_LUN[]              = "> LUN Available in the device:\n";
-const uint8_t MSG_ROOT_CONT[]        = "> Exploring disk flash ...\n";
-const uint8_t MSG_WR_PROTECT[]       = "> The disk is write protected\n";
-const uint8_t MSG_UNREC_ERROR[]      = "> UNRECOVERED ERROR STATE\n";
+const uint8_t MSG_MSC_CLASS[]        = "> Mass storage device connected\r\n";
+const uint8_t MSG_HID_CLASS[]        = "> HID device connected\r\n";
+const uint8_t MSG_DISK_SIZE[]        = "> Size of the disk in MBytes: \r\n";
+const uint8_t MSG_LUN[]              = "> LUN Available in the device:\r\n";
+const uint8_t MSG_ROOT_CONT[]        = "> Exploring disk flash ...\r\n";
+const uint8_t MSG_WR_PROTECT[]       = "> The disk is write protected\r\n";
+const uint8_t MSG_UNREC_ERROR[]      = "> UNRECOVERED ERROR STATE\r\n";
 
 /**
 * @}
 */
-
+#if MSC
 
 /** @defgroup USBH_USR_Private_FunctionPrototypes
 * @{
@@ -178,7 +178,7 @@ static void     Toggle_Leds(void);
 /**
 * @}
 */ 
-
+#endif
 
 /** @defgroup USBH_USR_Private_Functions
 * @{
@@ -198,13 +198,13 @@ void USBH_USR_Init(void)
   if(startup == 0 )
   {
     startup = 1;
-    /* Configure the LEDs */
-    STM_EVAL_LEDInit(LED1);
-    STM_EVAL_LEDInit(LED2);
-    STM_EVAL_LEDInit(LED3); 
-    STM_EVAL_LEDInit(LED4); 
-    
-    STM_EVAL_PBInit(BUTTON_KEY, BUTTON_MODE_GPIO);
+//    /* Configure the LEDs */
+//    STM_EVAL_LEDInit(LED1);
+//    STM_EVAL_LEDInit(LED2);
+//    STM_EVAL_LEDInit(LED3); 
+//    STM_EVAL_LEDInit(LED4); 
+//    
+//    STM_EVAL_PBInit(BUTTON_KEY, BUTTON_MODE_GPIO);
     
 #if defined (USE_STM322xG_EVAL)
   //STM322xG_LCD_Init();
@@ -216,7 +216,7 @@ void USBH_USR_Init(void)
  #error "Missing define: Evaluation board (ie. USE_STM322xG_EVAL)"
 #endif
     
-    USART_Configuration();
+//    USART_Configuration();
       
 #ifdef USE_USB_OTG_HS 
     //LCD_LOG_SetHeader(" USB OTG HS MSC Host");
@@ -286,6 +286,7 @@ void USBH_USR_DeviceDisconnected (void)
 void USBH_USR_ResetDevice(void)
 {
   /* callback for USB-Reset */
+  printf("reset device\r\n");
   
 }
 
@@ -489,7 +490,7 @@ void USBH_USR_OverCurrentDetected (void)
   printf("Overcurrent detected.\r\n");
 }
 
-
+ #if MSC
 /**
 * @brief  USBH_USR_MSC_Application 
 *         Demo application for mass storage
@@ -780,7 +781,7 @@ static uint8_t Image_Browser (char* path)
 static void Show_Image(void)
 {
   
-  uint16_t i = 0;
+//  uint16_t i = 0;
   uint16_t numOfReadBytes = 0;
   FRESULT res; 
   
@@ -789,7 +790,7 @@ static void Show_Image(void)
   //LCD_WriteRAM_Prepare(); /* Prepare to write GRAM */
   
   /* Bypass Bitmap header */ 
-  f_lseek (&file, 54);
+//  f_lseek (&file, 54);
   
   while (HCD_IsDeviceConnected(&USB_OTG_Core))
   {
@@ -798,10 +799,10 @@ static void Show_Image(void)
     {
       break; 
     }
-    for(i = 0 ; i < IMAGE_BUFFER_SIZE; i+= 2)
-    {
-      //LCD_WriteRAM(Image_Buf[i+1] << 8 | Image_Buf[i]); 
-    } 
+//    for(i = 0 ; i < IMAGE_BUFFER_SIZE; i+= 2)
+//    {
+//      //LCD_WriteRAM(Image_Buf[i+1] << 8 | Image_Buf[i]); 
+//    } 
   }
   
 }
@@ -824,6 +825,10 @@ static void Toggle_Leds(void)
     i = 0;
   }  
 }
+
+
+#endif
+
 /**
 * @brief  USBH_USR_DeInit
 *         Deint User state and associated variables
@@ -850,9 +855,8 @@ void USBH_USR_DeInit(void)
 */
 int USBH_USR_ADK_Application(void)
 {
-#ifdef DEBUG
-	  xputs("> USBH_USR_ADK_Application\n");
-#endif
+
+	  printf("> USBH_USR_ADK_Application\r\n");
   return(0);
 }
 

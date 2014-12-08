@@ -263,7 +263,7 @@ void USBH_Init(USB_OTG_CORE_HANDLE *pdev,
                USB_OTG_CORE_ID_TypeDef coreID, 
                USBH_HOST *phost,                    
                USBH_Class_cb_TypeDef *class_cb, 
-               USBH_Usr_cb_TypeDef *usr_cb);
+               USBH_Usr_cb_TypeDef *usr_cb);				   
                
 USBH_Status USBH_DeInit(USB_OTG_CORE_HANDLE *pdev, 
                         USBH_HOST *phost);
@@ -272,6 +272,10 @@ void USBH_Process(USB_OTG_CORE_HANDLE *pdev ,
 void USBH_ErrorHandle(USBH_HOST *phost, 
                       USBH_Status errType);
 
+
+
+
+ void reset_usb(void);	   ///add by test
 /**
   * @}
   */ 

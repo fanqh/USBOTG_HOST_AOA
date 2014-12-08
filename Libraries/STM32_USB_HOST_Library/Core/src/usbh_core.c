@@ -36,6 +36,8 @@
 #include "usart.h"
 
 
+#include "printf32_reg.h"
+
 /** @addtogroup USBH_LIB
   * @{
   */
@@ -160,6 +162,7 @@ void USBH_Init(USB_OTG_CORE_HANDLE *pdev,
                USBH_Class_cb_TypeDef *class_cb, 
                USBH_Usr_cb_TypeDef *usr_cb)
 {
+   
      
   /* Hardware Init */
   USB_OTG_BSP_Init(pdev);  
@@ -167,7 +170,7 @@ void USBH_Init(USB_OTG_CORE_HANDLE *pdev,
   /* configure GPIO pin used for switching VBUS power */
 //  USB_OTG_BSP_ConfigVBUS(0);  
   
-  
+
   /* Host de-initializations */
   USBH_DeInit(pdev, phost);
   
@@ -175,7 +178,7 @@ void USBH_Init(USB_OTG_CORE_HANDLE *pdev,
   phost->class_cb = class_cb;
   phost->usr_cb = usr_cb;  
     
-  /* Start the USB OTG core */     
+  /* Start the USB OTG core */     				
    HCD_Init(pdev , coreID);
    
   /* Upon Init call usr call back */
@@ -225,9 +228,10 @@ void USBH_Process(USB_OTG_CORE_HANDLE *pdev , USBH_HOST *phost)
   /* check for Host port events */
   if ((HCD_IsDeviceConnected(pdev) == 0)&& (phost->gState != HOST_IDLE)) 
   {
-  	 printf("check for Host port events");
+  	 printf("check for Host port events\r\n");
     if(phost->gState != HOST_DEV_DISCONNECTED) 
     {
+		
       phost->gState = HOST_DEV_DISCONNECTED;
     }
   }
@@ -242,18 +246,27 @@ void USBH_Process(USB_OTG_CORE_HANDLE *pdev , USBH_HOST *phost)
     {
 		 
 	  printf("HOST_DEV_ATTACHED is enter\r\n");
-      phost->gState = HOST_DEV_ATTACHED;
+      phost->gState = HOST_DEV_ATTACHED;	   
+
       USB_OTG_BSP_mDelay(100);
+
+	  	
+
     }
     break;
    
   case HOST_DEV_ATTACHED :
     
 //	printf("HOST_DEV_ATTACHED state reset device");
+			
 
     phost->usr_cb->DeviceAttached();
     phost->Control.hc_num_out = USBH_Alloc_Channel(pdev, 0x00);
     phost->Control.hc_num_in = USBH_Alloc_Channel(pdev, 0x80);  
+    
+
+//	printf("GRSTCTL: %X\r\n", USB_OTG_READ_REG32(&pdev->regs.GREGS->GRSTCTL));
+//	USB_OTG_BSP_mDelay(10);
   
     /* Reset USB Device */
     if ( HCD_ResetPort(pdev) == 0)
@@ -263,12 +276,14 @@ void USBH_Process(USB_OTG_CORE_HANDLE *pdev , USBH_HOST *phost)
       /*  Wait for USB USBH_ISR_PrtEnDisableChange()  
       Host is Now ready to start the Enumeration 
       */
-      
+      		 
       phost->device_prop.speed = HCD_GetCurrentSpeed(pdev);
       
       phost->gState = HOST_ENUMERATION;
       phost->usr_cb->DeviceSpeedDetected(phost->device_prop.speed);
-        
+       
+	   
+
       /* Open Control pipes */
       USBH_Open_Channel (pdev,
                            phost->Control.hc_num_in,
@@ -284,12 +299,13 @@ void USBH_Process(USB_OTG_CORE_HANDLE *pdev , USBH_HOST *phost)
                            phost->device_prop.speed,
                            EP_TYPE_CTRL,
                            phost->Control.ep0size);          
-   }
+   }	
+//     printfpdev_reg(pdev); 
     break;
     
   case HOST_ENUMERATION:     
-
-  	// printf(" in HOST_ENUMERATION state\r\n ");
+//			   printfpdev_reg(pdev); 
+//  	 printf(" in HOST_ENUMERATION state\r\n ");
     /* Check for enumeration status */  
     if ( USBH_HandleEnum(pdev , phost) == USBH_OK)
     { 
@@ -308,23 +324,42 @@ void USBH_Process(USB_OTG_CORE_HANDLE *pdev , USBH_HOST *phost)
     /*The function should return user response true to move to class state */
     if ( phost->usr_cb->UserInput() == USBH_USR_RESP_OK)
     {
- 	  printf("HOST_USR_INPUT state : user_input is ok");
+ 	  printf("HOST_USR_INPUT state : user_input is ok\r\n");
       if((phost->class_cb->Init(pdev, phost))\
         == USBH_OK)
       {
         phost->gState  = HOST_CLASS_REQUEST;     
       }     
     }   
+//	printf("GINTSTS :%X\r\n",(pdev->regs.GREGS->GINTSTS));
     break;
     
   case HOST_CLASS_REQUEST:  
     /* process class standard contol requests state machine */ 
-    status = phost->class_cb->Requests(pdev, phost);
+     status = phost->class_cb->Requests(pdev, phost);
     
      if(status == USBH_OK)
      {
 	   printf("HOST_CLASS_REQUEST state : contol requests is ok and host class is enter\r\n");
        phost->gState  = HOST_CLASS;
+//	   USB_OTG_WRITE_REG32(&pdev->regs.GREGS->GRXSTSR, 0xf0003);
+//	   USB_OTG_WRITE_REG32(&pdev->regs.GREGS->GRXSTSP, 0xf0003);
+//	   USB_OTG_WRITE_REG32(&pdev->regs.GREGS->HNPTXSTS,0X8080060);
+
+#if 0
+//	   USB_OTG_WRITE_REG32(&pdev->regs.HREGS->HFNUM,0X43FD039B);
+	   printf("GRXSTSR: %X\r\n", USB_OTG_READ_REG32(&pdev->regs.GREGS->GRXSTSR));
+	   printf("HNPTXSTS: %X\r\n", USB_OTG_READ_REG32(&pdev->regs.GREGS->HNPTXSTS));
+	   printf("HFNUM: %X\r\n", USB_OTG_READ_REG32(&pdev->regs.HREGS->HFNUM));
+//	   printf("HNPTXSTS: %X\r\n", USB_OTG_READ_REG32(&pdev->regs.GREGS->HNPTXSTS));
+
+	   printf("DIEPTSIZ: %X\r\n", USB_OTG_READ_REG32(&pdev->regs.INEP_REGS[8]->DIEPCTL ));
+	   printf("DIEPDMA: %X\r\n", USB_OTG_READ_REG32(&pdev->regs.INEP_REGS[8]->DIEPDMA ));
+
+
+	   printfpdev_reg(pdev);
+#endif
+	   // printf("GINTSTS :%X\r\n",(pdev->regs.GREGS->GINTSTS));
      }  
      
      else
@@ -346,6 +381,7 @@ void USBH_Process(USB_OTG_CORE_HANDLE *pdev , USBH_HOST *phost)
     break;
     
   case HOST_SUSPENDED:
+  	printf("HOST_SUSPENDED\r\n");
     break;
   
   case HOST_ERROR_STATE:
@@ -358,7 +394,7 @@ void USBH_Process(USB_OTG_CORE_HANDLE *pdev , USBH_HOST *phost)
   case HOST_DEV_DISCONNECTED :
     
     /* Manage User disconnect operations*/
-    phost->usr_cb->DeviceDisconnected();
+    phost->usr_cb->DeviceDisconnected();//user µ÷ÓÃ
     
     /* Re-Initilaize Host for new Enumeration */
     USBH_DeInit(pdev, phost);
@@ -366,6 +402,19 @@ void USBH_Process(USB_OTG_CORE_HANDLE *pdev , USBH_HOST *phost)
     phost->class_cb->DeInit(pdev, &phost->device_prop); 
     USBH_DeAllocate_AllChannel(pdev);  
     phost->gState = HOST_IDLE;
+
+//	USB_OTG_WRITE_REG32(pdev->regs.HPRT0, USB_OTG_READ_REG32(pdev->regs.HPRT0) | 1<<8 );
+
+//	USB_OTG_WRITE_REG32(&pdev->regs.GREGS->GRSTCTL, USB_OTG_READ_REG32(&pdev->regs.GREGS->GRSTCTL) | 0x7 );
+//	USB_OTG_BSP_mDelay(100);
+//	printf("diconnect is arrived\r\n");
+//	RCC_AHB2PeriphResetCmd(RCC_AHB2Periph_OTG_FS, ENABLE);
+//	 reset_usb();
+//	USB_OTG_CoreInit(pdev);
+//	reset_usb();
+
+// NVIC_SystemReset();
+
     
     break;
     
@@ -388,12 +437,14 @@ void USBH_ErrorHandle(USBH_HOST *phost, USBH_Status errType)
   if ( (errType == USBH_ERROR_SPEED_UNKNOWN) ||
        (errType == USBH_UNRECOVERED_ERROR) )
   {
+  	printf("speed error or unrecovered error\r\n");
     phost->usr_cb->UnrecoveredError(); 
     phost->gState = HOST_ERROR_STATE;   
   }  
   /* USB host restart requested from application layer */
   else if(errType == USBH_APPLY_DEINIT)
   {
+  	printf("USBH_APPLY_DEINIT\r\n");
     phost->gState = HOST_ERROR_STATE;  
     /* user callback for initalization */
     phost->usr_cb->Init();
