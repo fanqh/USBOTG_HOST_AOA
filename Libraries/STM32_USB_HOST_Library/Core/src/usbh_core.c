@@ -351,14 +351,14 @@ void USBH_Process(USB_OTG_CORE_HANDLE *pdev , USBH_HOST *phost)
 	   printf("GRXSTSR: %X\r\n", USB_OTG_READ_REG32(&pdev->regs.GREGS->GRXSTSR));
 	   printf("HNPTXSTS: %X\r\n", USB_OTG_READ_REG32(&pdev->regs.GREGS->HNPTXSTS));
 	   printf("HFNUM: %X\r\n", USB_OTG_READ_REG32(&pdev->regs.HREGS->HFNUM));
-//	   printf("HNPTXSTS: %X\r\n", USB_OTG_READ_REG32(&pdev->regs.GREGS->HNPTXSTS));
+	   printf("HNPTXSTS: %X\r\n", USB_OTG_READ_REG32(&pdev->regs.GREGS->HNPTXSTS));
 
 	   printf("DIEPTSIZ: %X\r\n", USB_OTG_READ_REG32(&pdev->regs.INEP_REGS[8]->DIEPCTL ));
 	   printf("DIEPDMA: %X\r\n", USB_OTG_READ_REG32(&pdev->regs.INEP_REGS[8]->DIEPDMA ));
-
-
 	   printfpdev_reg(pdev);
-#endif
+
+#endif	   
+
 	   // printf("GINTSTS :%X\r\n",(pdev->regs.GREGS->GINTSTS));
      }  
      
@@ -511,7 +511,7 @@ static USBH_Status USBH_HandleEnum(USB_OTG_CORE_HANDLE *pdev, USBH_HOST *phost)
     if ( USBH_SetAddress(pdev, phost, USBH_DEVICE_ADDRESS) == USBH_OK)
     {
 
-	printf("set address\r\n");
+	  printf("set address\r\n");
       USB_OTG_BSP_mDelay(2);
       phost->device_prop.address = USBH_DEVICE_ADDRESS;
       
@@ -542,7 +542,7 @@ static USBH_Status USBH_HandleEnum(USB_OTG_CORE_HANDLE *pdev, USBH_HOST *phost)
                           phost,
                           USB_CONFIGURATION_DESC_SIZE) == USBH_OK)
     {
-	printf("get standard configuration descriptor\r\n");
+	  printf("get standard configuration descriptor\r\n");
       phost->EnumState = ENUM_GET_FULL_CFG_DESC;
     }
     break;
@@ -567,7 +567,7 @@ static USBH_Status USBH_HandleEnum(USB_OTG_CORE_HANDLE *pdev, USBH_HOST *phost)
     if (phost->device_prop.Dev_Desc.iManufacturer != 0)
     { /* Check that Manufacturer String is available */
       
-	 printf("Check that Manufacturer String is available\r\n");
+	  printf("Check that Manufacturer String is available\r\n");
       if ( USBH_Get_StringDesc(pdev,
                                phost,
                                phost->device_prop.Dev_Desc.iManufacturer, 
@@ -595,7 +595,7 @@ static USBH_Status USBH_HandleEnum(USB_OTG_CORE_HANDLE *pdev, USBH_HOST *phost)
                                Local_Buffer, 
                                0xff) == USBH_OK)
       {
-	   printf("Check that Product string is available\r\n");
+	    printf("Check that Product string is available\r\n");
         /* User callback for Product string */
         phost->usr_cb->ProductString(Local_Buffer);
         phost->EnumState = ENUM_GET_SERIALNUM_STRING_DESC;

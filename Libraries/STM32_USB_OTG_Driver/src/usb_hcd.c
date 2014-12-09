@@ -248,7 +248,8 @@ uint32_t HCD_HC_Init (USB_OTG_CORE_HANDLE *pdev , uint8_t hc_num)
   */
 uint32_t HCD_SubmitRequest (USB_OTG_CORE_HANDLE *pdev , uint8_t hc_num) 	 //
 {
-  
+ 
+ //  printf("********submitRequest******\r\n");
   pdev->host.URB_State[hc_num] =   URB_IDLE;  
   pdev->host.hc[hc_num].xfer_count = 0 ;
   return USB_OTG_HC_StartXfer(pdev, hc_num);

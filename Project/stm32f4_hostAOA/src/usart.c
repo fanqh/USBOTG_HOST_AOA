@@ -70,7 +70,7 @@ void USART_Configuration(void)
   USART_ITConfig(Open_USART,USART_IT_RXNE,ENABLE);
 
   USART_Cmd(Open_USART, ENABLE);
-  USART_NVIC_Config();
+  //USART_NVIC_Config();
 
 }
 

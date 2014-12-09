@@ -4,164 +4,117 @@
 <h1>µVision Build Log</h1>
 <h2>Project:</h2>
 F:\test\USBOTG_HOST_AOA\Project\stm32f4_hostAOA\MDK-ARM\USBH_MSC.uvproj
-Project File Date:  11/27/2014
+Project File Date:  12/08/2014
 
 <h2>Output:</h2>
 Build target 'STM324xG-EVAL_USBH-FS'
+linking...
+Program Size: Code=15616 RO-data=864 RW-data=188 ZI-data=3652  
+FromELF: creating hex file...
+".\STM324xG-EVAL\STM324xG-EVAL_FS.axf" - 0 Error(s), 0 Warning(s).
+Build target 'STM324xG-EVAL_USBH-FS'
+linking...
+Program Size: Code=15616 RO-data=864 RW-data=188 ZI-data=3652  
+FromELF: creating hex file...
+".\STM324xG-EVAL\STM324xG-EVAL_FS.axf" - 0 Error(s), 0 Warning(s).
+Load "F:\\test\\USBOTG_HOST_AOA\\Project\\stm32f4_hostAOA\\MDK-ARM\\STM324xG-EVAL\\STM324xG-EVAL_FS.AXF" 
+Build target 'STM324xG-EVAL_USBH-FS'
+compiling main.c...
+..\src\main.c(113): warning:  #177-D: variable "msg" was declared but never referenced
+..\src\main.c(114): warning:  #177-D: variable "len" was declared but never referenced
+linking...
+Program Size: Code=15404 RO-data=864 RW-data=188 ZI-data=3652  
+FromELF: creating hex file...
+".\STM324xG-EVAL\STM324xG-EVAL_FS.axf" - 0 Error(s), 2 Warning(s).
+Build target 'STM324xG-EVAL_USBH-FS'
+linking...
+Program Size: Code=15404 RO-data=864 RW-data=188 ZI-data=3652  
+FromELF: creating hex file...
+".\STM324xG-EVAL\STM324xG-EVAL_FS.axf" - 0 Error(s), 0 Warning(s).
+Load "F:\\test\\USBOTG_HOST_AOA\\Project\\stm32f4_hostAOA\\MDK-ARM\\STM324xG-EVAL\\STM324xG-EVAL_FS.AXF" 
+Build target 'STM324xG-EVAL_USBH-FS'
+linking...
+Program Size: Code=15404 RO-data=864 RW-data=188 ZI-data=3652  
+FromELF: creating hex file...
+".\STM324xG-EVAL\STM324xG-EVAL_FS.axf" - 0 Error(s), 0 Warning(s).
+Load "F:\\test\\USBOTG_HOST_AOA\\Project\\stm32f4_hostAOA\\MDK-ARM\\STM324xG-EVAL\\STM324xG-EVAL_FS.AXF" 
+Build target 'STM324xG-EVAL_USBH-FS'
+compiling main.c...
+..\src\main.c(156): warning:  #223-D: function "USBH_ADK_ClearCount" declared implicitly
+linking...
+Program Size: Code=15616 RO-data=864 RW-data=188 ZI-data=3652  
+FromELF: creating hex file...
+".\STM324xG-EVAL\STM324xG-EVAL_FS.axf" - 0 Error(s), 1 Warning(s).
+Build target 'STM324xG-EVAL_USBH-FS'
+compiling usb_core.c...
+..\..\..\Libraries\STM32_USB_OTG_Driver\src\usb_core.c(1072): warning:  #223-D: function "printf" declared implicitly
+linking...
+Program Size: Code=15644 RO-data=864 RW-data=188 ZI-data=3652  
+FromELF: creating hex file...
+".\STM324xG-EVAL\STM324xG-EVAL_FS.axf" - 0 Error(s), 1 Warning(s).
+Load "F:\\test\\USBOTG_HOST_AOA\\Project\\stm32f4_hostAOA\\MDK-ARM\\STM324xG-EVAL\\STM324xG-EVAL_FS.AXF" 
+Build target 'STM324xG-EVAL_USBH-FS'
+compiling usb_core.c...
+..\..\..\Libraries\STM32_USB_OTG_Driver\src\usb_core.c(1028): warning:  #223-D: function "printf" declared implicitly
+linking...
+Program Size: Code=15648 RO-data=864 RW-data=188 ZI-data=3652  
+FromELF: creating hex file...
+".\STM324xG-EVAL\STM324xG-EVAL_FS.axf" - 0 Error(s), 1 Warning(s).
+Load "F:\\test\\USBOTG_HOST_AOA\\Project\\stm32f4_hostAOA\\MDK-ARM\\STM324xG-EVAL\\STM324xG-EVAL_FS.AXF" 
+Build target 'STM324xG-EVAL_USBH-FS'
+compiling usb_core.c...
+compiling usb_hcd.c...
+..\..\..\Libraries\STM32_USB_OTG_Driver\src\usb_hcd.c(251): warning:  #223-D: function "printf" declared implicitly
+linking...
+Program Size: Code=15656 RO-data=864 RW-data=188 ZI-data=3652  
+FromELF: creating hex file...
+".\STM324xG-EVAL\STM324xG-EVAL_FS.axf" - 0 Error(s), 1 Warning(s).
+Load "F:\\test\\USBOTG_HOST_AOA\\Project\\stm32f4_hostAOA\\MDK-ARM\\STM324xG-EVAL\\STM324xG-EVAL_FS.AXF" 
+Build target 'STM324xG-EVAL_USBH-FS'
+compiling usb_core.c...
+..\..\..\Libraries\STM32_USB_OTG_Driver\src\usb_core.c(1028): warning:  #223-D: function "printf" declared implicitly
+compiling usb_hcd.c...
+linking...
+Program Size: Code=15648 RO-data=864 RW-data=188 ZI-data=3652  
+FromELF: creating hex file...
+".\STM324xG-EVAL\STM324xG-EVAL_FS.axf" - 0 Error(s), 1 Warning(s).
+Load "F:\\test\\USBOTG_HOST_AOA\\Project\\stm32f4_hostAOA\\MDK-ARM\\STM324xG-EVAL\\STM324xG-EVAL_FS.AXF" 
+Build target 'STM324xG-EVAL_USBH-FS'
+compiling usb_core.c...
+linking...
+Program Size: Code=15648 RO-data=864 RW-data=188 ZI-data=3652  
+FromELF: creating hex file...
+".\STM324xG-EVAL\STM324xG-EVAL_FS.axf" - 0 Error(s), 0 Warning(s).
+Build target 'STM324xG-EVAL_USBH-FS'
+linking...
+Program Size: Code=15648 RO-data=864 RW-data=188 ZI-data=3652  
+FromELF: creating hex file...
+".\STM324xG-EVAL\STM324xG-EVAL_FS.axf" - 0 Error(s), 0 Warning(s).
+Load "F:\\test\\USBOTG_HOST_AOA\\Project\\stm32f4_hostAOA\\MDK-ARM\\STM324xG-EVAL\\STM324xG-EVAL_FS.AXF" 
+Build target 'STM324xG-EVAL_USBH-FS'
 compiling usbh_core.c...
 linking...
-Program Size: Code=15084 RO-data=924 RW-data=192 ZI-data=3656  
+Program Size: Code=15156 RO-data=864 RW-data=188 ZI-data=3652  
 FromELF: creating hex file...
 ".\STM324xG-EVAL\STM324xG-EVAL_FS.axf" - 0 Error(s), 0 Warning(s).
 Build target 'STM324xG-EVAL_USBH-FS'
+compiling usb_core.c...
 linking...
-Program Size: Code=15084 RO-data=924 RW-data=192 ZI-data=3656  
-FromELF: creating hex file...
-".\STM324xG-EVAL\STM324xG-EVAL_FS.axf" - 0 Error(s), 0 Warning(s).
-Build target 'STM324xG-EVAL_USBH-FS'
-linking...
-Program Size: Code=15084 RO-data=924 RW-data=192 ZI-data=3656  
-FromELF: creating hex file...
-".\STM324xG-EVAL\STM324xG-EVAL_FS.axf" - 0 Error(s), 0 Warning(s).
-Load "F:\\test\\USBOTG_HOST_AOA\\Project\\stm32f4_hostAOA\\MDK-ARM\\STM324xG-EVAL\\STM324xG-EVAL_FS.AXF" 
-Load "F:\\test\\USBOTG_HOST_AOA\\Project\\stm32f4_hostAOA\\MDK-ARM\\STM324xG-EVAL\\STM324xG-EVAL_FS.AXF" 
-Build target 'STM324xG-EVAL_USBH-FS'
-linking...
-Program Size: Code=15084 RO-data=924 RW-data=192 ZI-data=3656  
-FromELF: creating hex file...
-".\STM324xG-EVAL\STM324xG-EVAL_FS.axf" - 0 Error(s), 0 Warning(s).
-Load "F:\\test\\USBOTG_HOST_AOA\\Project\\stm32f4_hostAOA\\MDK-ARM\\STM324xG-EVAL\\STM324xG-EVAL_FS.AXF" 
-Load "F:\\test\\USBOTG_HOST_AOA\\Project\\stm32f4_hostAOA\\MDK-ARM\\STM324xG-EVAL\\STM324xG-EVAL_FS.AXF" 
-Load "F:\\test\\USBOTG_HOST_AOA\\Project\\stm32f4_hostAOA\\MDK-ARM\\STM324xG-EVAL\\STM324xG-EVAL_FS.AXF" 
-Build target 'STM324xG-EVAL_USBH-FS'
-linking...
-Program Size: Code=15084 RO-data=924 RW-data=192 ZI-data=3656  
+Program Size: Code=15160 RO-data=864 RW-data=188 ZI-data=3652  
 FromELF: creating hex file...
 ".\STM324xG-EVAL\STM324xG-EVAL_FS.axf" - 0 Error(s), 0 Warning(s).
 Load "F:\\test\\USBOTG_HOST_AOA\\Project\\stm32f4_hostAOA\\MDK-ARM\\STM324xG-EVAL\\STM324xG-EVAL_FS.AXF" 
 Build target 'STM324xG-EVAL_USBH-FS'
+compiling usb_core.c...
+compiling usb_hcd.c...
+..\..\..\Libraries\STM32_USB_OTG_Driver\src\usb_hcd.c(252): warning:  #223-D: function "printf" declared implicitly
 linking...
-Program Size: Code=15084 RO-data=924 RW-data=192 ZI-data=3656  
+Program Size: Code=15164 RO-data=864 RW-data=188 ZI-data=3652  
 FromELF: creating hex file...
-".\STM324xG-EVAL\STM324xG-EVAL_FS.axf" - 0 Error(s), 0 Warning(s).
-Build target 'STM324xG-EVAL_USBH-FS'
-compiling main.c...
-..\src\main.c(156): warning:  #223-D: function "USBH_ADK_ClearCount" declared implicitly
-linking...
-.\STM324xG-EVAL\STM324xG-EVAL_FS.axf: Error: L6218E: Undefined symbol USBH_MSC_Param (referred from usbh_usr.o).
-.\STM324xG-EVAL\STM324xG-EVAL_FS.axf: Error: L6218E: Undefined symbol USBH_MSC_ModeSense6 (referred from usbh_msc_core.o).
-.\STM324xG-EVAL\STM324xG-EVAL_FS.axf: Error: L6218E: Undefined symbol USBH_MSC_ReadCapacity10 (referred from usbh_msc_core.o).
-.\STM324xG-EVAL\STM324xG-EVAL_FS.axf: Error: L6218E: Undefined symbol USBH_MSC_RequestSense (referred from usbh_msc_core.o).
-.\STM324xG-EVAL\STM324xG-EVAL_FS.axf: Error: L6218E: Undefined symbol USBH_MSC_TestUnitReady (referred from usbh_msc_core.o).
-.\STM324xG-EVAL\STM324xG-EVAL_FS.axf: Error: L6218E: Undefined symbol USBH_MSC_Read10 (referred from usbh_msc_fatfs.o).
-.\STM324xG-EVAL\STM324xG-EVAL_FS.axf: Error: L6218E: Undefined symbol USBH_MSC_Write10 (referred from usbh_msc_fatfs.o).
-Target not created
-Build target 'STM324xG-EVAL_USBH-FS'
-linking...
-.\STM324xG-EVAL\STM324xG-EVAL_FS.axf: Error: L6218E: Undefined symbol USBH_MSC_Param (referred from usbh_usr.o).
-.\STM324xG-EVAL\STM324xG-EVAL_FS.axf: Error: L6218E: Undefined symbol USBH_MSC_ModeSense6 (referred from usbh_msc_core.o).
-.\STM324xG-EVAL\STM324xG-EVAL_FS.axf: Error: L6218E: Undefined symbol USBH_MSC_ReadCapacity10 (referred from usbh_msc_core.o).
-.\STM324xG-EVAL\STM324xG-EVAL_FS.axf: Error: L6218E: Undefined symbol USBH_MSC_RequestSense (referred from usbh_msc_core.o).
-.\STM324xG-EVAL\STM324xG-EVAL_FS.axf: Error: L6218E: Undefined symbol USBH_MSC_TestUnitReady (referred from usbh_msc_core.o).
-.\STM324xG-EVAL\STM324xG-EVAL_FS.axf: Error: L6218E: Undefined symbol USBH_MSC_Read10 (referred from usbh_msc_fatfs.o).
-.\STM324xG-EVAL\STM324xG-EVAL_FS.axf: Error: L6218E: Undefined symbol USBH_MSC_Write10 (referred from usbh_msc_fatfs.o).
-Target not created
-Build target 'STM324xG-EVAL_USBH-FS'
-linking...
-.\STM324xG-EVAL\STM324xG-EVAL_FS.axf: Error: L6218E: Undefined symbol USBH_MSC_Param (referred from usbh_usr.o).
-.\STM324xG-EVAL\STM324xG-EVAL_FS.axf: Error: L6218E: Undefined symbol disk_initialize (referred from ff.o).
-.\STM324xG-EVAL\STM324xG-EVAL_FS.axf: Error: L6218E: Undefined symbol disk_ioctl (referred from ff.o).
-.\STM324xG-EVAL\STM324xG-EVAL_FS.axf: Error: L6218E: Undefined symbol disk_read (referred from ff.o).
-.\STM324xG-EVAL\STM324xG-EVAL_FS.axf: Error: L6218E: Undefined symbol disk_status (referred from ff.o).
-.\STM324xG-EVAL\STM324xG-EVAL_FS.axf: Error: L6218E: Undefined symbol disk_write (referred from ff.o).
-Target not created
-Build target 'STM324xG-EVAL_USBH-FS'
-compiling usbh_usr.c...
-..\src\usbh_usr.c(245): warning:  #181-D: argument is incompatible with corresponding format string conversion
-..\src\usbh_usr.c(259): warning:  #181-D: argument is incompatible with corresponding format string conversion
-..\src\usbh_usr.c(279): warning:  #181-D: argument is incompatible with corresponding format string conversion
-..\src\usbh_usr.c(305): warning:  #181-D: argument is incompatible with corresponding format string conversion
-..\src\usbh_usr.c(310): warning:  #181-D: argument is incompatible with corresponding format string conversion
-..\src\usbh_usr.c(315): warning:  #181-D: argument is incompatible with corresponding format string conversion
-..\src\usbh_usr.c(320): warning:  #181-D: argument is incompatible with corresponding format string conversion
-..\src\usbh_usr.c(371): warning:  #181-D: argument is incompatible with corresponding format string conversion
-..\src\usbh_usr.c(376): warning:  #181-D: argument is incompatible with corresponding format string conversion
-..\src\usbh_usr.c(434): warning:  #181-D: argument is incompatible with corresponding format string conversion
-..\src\usbh_usr.c(174): warning:  #177-D: function "Explore_Disk" was declared but never referenced
-..\src\usbh_usr.c(175): warning:  #177-D: function "Image_Browser" was declared but never referenced
-..\src\usbh_usr.c(176): warning:  #177-D: function "Show_Image" was declared but never referenced
-..\src\usbh_usr.c(822): warning:  #177-D: function "Toggle_Leds" was declared but never referenced
-linking...
-.\STM324xG-EVAL\STM324xG-EVAL_FS.axf: Error: L6218E: Undefined symbol USBH_USR_OverCurrentDetected (referred from usbh_usr.o).
-.\STM324xG-EVAL\STM324xG-EVAL_FS.axf: Error: L6218E: Undefined symbol disk_initialize (referred from ff.o).
-.\STM324xG-EVAL\STM324xG-EVAL_FS.axf: Error: L6218E: Undefined symbol disk_ioctl (referred from ff.o).
-.\STM324xG-EVAL\STM324xG-EVAL_FS.axf: Error: L6218E: Undefined symbol disk_read (referred from ff.o).
-.\STM324xG-EVAL\STM324xG-EVAL_FS.axf: Error: L6218E: Undefined symbol disk_status (referred from ff.o).
-.\STM324xG-EVAL\STM324xG-EVAL_FS.axf: Error: L6218E: Undefined symbol disk_write (referred from ff.o).
-Target not created
-Build target 'STM324xG-EVAL_USBH-FS'
-compiling usbh_usr.c...
-..\src\usbh_usr.c(245): warning:  #181-D: argument is incompatible with corresponding format string conversion
-..\src\usbh_usr.c(259): warning:  #181-D: argument is incompatible with corresponding format string conversion
-..\src\usbh_usr.c(279): warning:  #181-D: argument is incompatible with corresponding format string conversion
-..\src\usbh_usr.c(305): warning:  #181-D: argument is incompatible with corresponding format string conversion
-..\src\usbh_usr.c(310): warning:  #181-D: argument is incompatible with corresponding format string conversion
-..\src\usbh_usr.c(315): warning:  #181-D: argument is incompatible with corresponding format string conversion
-..\src\usbh_usr.c(320): warning:  #181-D: argument is incompatible with corresponding format string conversion
-..\src\usbh_usr.c(371): warning:  #181-D: argument is incompatible with corresponding format string conversion
-..\src\usbh_usr.c(376): warning:  #181-D: argument is incompatible with corresponding format string conversion
-..\src\usbh_usr.c(434): warning:  #181-D: argument is incompatible with corresponding format string conversion
-..\src\usbh_usr.c(528): warning:  #181-D: argument is incompatible with corresponding format string conversion
-..\src\usbh_usr.c(537): warning:  #181-D: argument is incompatible with corresponding format string conversion
-..\src\usbh_usr.c(699): warning:  #181-D: argument is incompatible with corresponding format string conversion
-..\src\usbh_usr.c(705): warning:  #181-D: argument is incompatible with corresponding format string conversion
-..\src\usbh_usr.c(781): warning:  #177-D: function "Show_Image" was declared but never referenced
-compiling usbh_msc_scsi.c...
-compiling usbh_msc_bot.c...
-compiling usbh_msc_core.c...
-compiling usbh_msc_fatfs.c...
-linking...
-Program Size: Code=15084 RO-data=924 RW-data=192 ZI-data=3656  
-FromELF: creating hex file...
-".\STM324xG-EVAL\STM324xG-EVAL_FS.axf" - 0 Error(s), 15 Warning(s).
-Build target 'STM324xG-EVAL_USBH-FS'
-compiling usbh_usr.c...
-..\src\usbh_usr.c(245): warning:  #181-D: argument is incompatible with corresponding format string conversion
-..\src\usbh_usr.c(259): warning:  #181-D: argument is incompatible with corresponding format string conversion
-..\src\usbh_usr.c(279): warning:  #181-D: argument is incompatible with corresponding format string conversion
-..\src\usbh_usr.c(305): warning:  #181-D: argument is incompatible with corresponding format string conversion
-..\src\usbh_usr.c(310): warning:  #181-D: argument is incompatible with corresponding format string conversion
-..\src\usbh_usr.c(315): warning:  #181-D: argument is incompatible with corresponding format string conversion
-..\src\usbh_usr.c(320): warning:  #181-D: argument is incompatible with corresponding format string conversion
-..\src\usbh_usr.c(371): warning:  #181-D: argument is incompatible with corresponding format string conversion
-..\src\usbh_usr.c(376): warning:  #181-D: argument is incompatible with corresponding format string conversion
-..\src\usbh_usr.c(434): warning:  #181-D: argument is incompatible with corresponding format string conversion
-..\src\usbh_usr.c(174): warning:  #177-D: function "Explore_Disk" was declared but never referenced
-..\src\usbh_usr.c(175): warning:  #177-D: function "Image_Browser" was declared but never referenced
-..\src\usbh_usr.c(176): warning:  #177-D: function "Show_Image" was declared but never referenced
-..\src\usbh_usr.c(177): warning:  #177-D: function "Toggle_Leds" was declared but never referenced
-linking...
-Program Size: Code=15084 RO-data=864 RW-data=188 ZI-data=3652  
-FromELF: creating hex file...
-".\STM324xG-EVAL\STM324xG-EVAL_FS.axf" - 0 Error(s), 14 Warning(s).
-Build target 'STM324xG-EVAL_USBH-FS'
-compiling usbh_usr.c...
-..\src\usbh_usr.c(245): warning:  #181-D: argument is incompatible with corresponding format string conversion
-..\src\usbh_usr.c(259): warning:  #181-D: argument is incompatible with corresponding format string conversion
-..\src\usbh_usr.c(279): warning:  #181-D: argument is incompatible with corresponding format string conversion
-..\src\usbh_usr.c(305): warning:  #181-D: argument is incompatible with corresponding format string conversion
-..\src\usbh_usr.c(310): warning:  #181-D: argument is incompatible with corresponding format string conversion
-..\src\usbh_usr.c(315): warning:  #181-D: argument is incompatible with corresponding format string conversion
-..\src\usbh_usr.c(320): warning:  #181-D: argument is incompatible with corresponding format string conversion
-..\src\usbh_usr.c(371): warning:  #181-D: argument is incompatible with corresponding format string conversion
-..\src\usbh_usr.c(376): warning:  #181-D: argument is incompatible with corresponding format string conversion
-..\src\usbh_usr.c(434): warning:  #181-D: argument is incompatible with corresponding format string conversion
-linking...
-Program Size: Code=15084 RO-data=864 RW-data=188 ZI-data=3652  
-FromELF: creating hex file...
-".\STM324xG-EVAL\STM324xG-EVAL_FS.axf" - 0 Error(s), 10 Warning(s).
-Build target 'STM324xG-EVAL_USBH-FS'
+".\STM324xG-EVAL\STM324xG-EVAL_FS.axf" - 0 Error(s), 1 Warning(s).
+Rebuild target 'STM324xG-EVAL_USBH-FS'
 compiling stm32fxxx_it.c...
+compiling usb_bsp.c...
 compiling main.c...
 ..\src\main.c(156): warning:  #223-D: function "USBH_ADK_ClearCount" declared implicitly
 compiling usbh_usr.c...
@@ -175,10 +128,17 @@ compiling usbh_usr.c...
 ..\src\usbh_usr.c(371): warning:  #181-D: argument is incompatible with corresponding format string conversion
 ..\src\usbh_usr.c(376): warning:  #181-D: argument is incompatible with corresponding format string conversion
 ..\src\usbh_usr.c(434): warning:  #181-D: argument is incompatible with corresponding format string conversion
+compiling misc.c...
+compiling usart.c...
+compiling printf32_reg.c...
 compiling usbh_stdreq.c...
 compiling usbh_core.c...
 compiling usbh_hcs.c...
 compiling usbh_ioreq.c...
+compiling usb_hcd_int.c...
+compiling usb_core.c...
+compiling usb_hcd.c...
+..\..\..\Libraries\STM32_USB_OTG_Driver\src\usb_hcd.c(252): warning:  #223-D: function "printf" declared implicitly
 compiling usbh_adk_core.c...
 ..\src\usbh_adk_core.c(97): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "char *restrict"
 ..\src\usbh_adk_core.c(97): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "const char *restrict"
@@ -195,33 +155,266 @@ compiling usbh_adk_core.c...
 ..\src\usbh_adk_core.c(207): warning:  #68-D: integer conversion resulted in a change of sign
 ..\src\usbh_adk_core.c(339): warning:  #550-D: variable "HCD_Status" was set but never used
 ..\src\usbh_adk_core.c(340): warning:  #550-D: variable "HCD_GXferCnt" was set but never used
-..\src\usbh_adk_core.c(417): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "const char *"
-..\src\usbh_adk_core.c(521): warning:  #550-D: variable "URB_Status" was set but never used
-..\src\usbh_adk_core.c(522): warning:  #550-D: variable "HCD_Status" was set but never used
-..\src\usbh_adk_core.c(523): warning:  #550-D: variable "HCD_GXferCnt" was set but never used
-..\src\usbh_adk_core.c(587): warning:  #223-D: function "HCD_ClearXferCnt" declared implicitly
+..\src\usbh_adk_core.c(418): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "const char *"
+..\src\usbh_adk_core.c(522): warning:  #550-D: variable "URB_Status" was set but never used
+..\src\usbh_adk_core.c(523): warning:  #550-D: variable "HCD_Status" was set but never used
+..\src\usbh_adk_core.c(524): warning:  #550-D: variable "HCD_GXferCnt" was set but never used
+..\src\usbh_adk_core.c(588): warning:  #223-D: function "HCD_ClearXferCnt" declared implicitly
 compiling usbh_msc_scsi.c...
 compiling usbh_msc_bot.c...
 compiling usbh_msc_core.c...
 compiling usbh_msc_fatfs.c...
+compiling ff.c...
+compiling fattime.c...
+assembling startup_stm32f4xx.s...
+compiling system_stm32f4xx.c...
+compiling stm32f4xx_sdio.c...
+compiling stm32f4xx_spi.c...
+compiling stm32f4xx_syscfg.c...
+compiling stm32f4xx_tim.c...
+compiling stm32f4xx_usart.c...
+compiling stm32f4xx_dma.c...
+compiling stm32f4xx_exti.c...
+compiling stm32f4xx_flash.c...
+compiling stm32f4xx_fsmc.c...
+compiling stm32f4xx_gpio.c...
+compiling stm32f4xx_i2c.c...
+compiling stm32f4xx_pwr.c...
+compiling stm32f4xx_rcc.c...
+compiling stm324xg_eval_sdio_sd.c...
+compiling stm324xg_eval_ioe.c...
+compiling stm324xg_eval_lcd.c...
+compiling stm324xg_eval.c...
 linking...
-Program Size: Code=15120 RO-data=864 RW-data=188 ZI-data=3652  
+Program Size: Code=15164 RO-data=864 RW-data=188 ZI-data=3652  
 FromELF: creating hex file...
-".\STM324xG-EVAL\STM324xG-EVAL_FS.axf" - 0 Error(s), 31 Warning(s).
+".\STM324xG-EVAL\STM324xG-EVAL_FS.axf" - 0 Error(s), 32 Warning(s).
+Load "F:\\test\\USBOTG_HOST_AOA\\Project\\stm32f4_hostAOA\\MDK-ARM\\STM324xG-EVAL\\STM324xG-EVAL_FS.AXF" 
 Build target 'STM324xG-EVAL_USBH-FS'
-compiling usbh_usr.c...
-..\src\usbh_usr.c(245): warning:  #181-D: argument is incompatible with corresponding format string conversion
-..\src\usbh_usr.c(259): warning:  #181-D: argument is incompatible with corresponding format string conversion
-..\src\usbh_usr.c(279): warning:  #181-D: argument is incompatible with corresponding format string conversion
-..\src\usbh_usr.c(305): warning:  #181-D: argument is incompatible with corresponding format string conversion
-..\src\usbh_usr.c(310): warning:  #181-D: argument is incompatible with corresponding format string conversion
-..\src\usbh_usr.c(315): warning:  #181-D: argument is incompatible with corresponding format string conversion
-..\src\usbh_usr.c(320): warning:  #181-D: argument is incompatible with corresponding format string conversion
-..\src\usbh_usr.c(371): warning:  #181-D: argument is incompatible with corresponding format string conversion
-..\src\usbh_usr.c(376): warning:  #181-D: argument is incompatible with corresponding format string conversion
-..\src\usbh_usr.c(434): warning:  #181-D: argument is incompatible with corresponding format string conversion
-compiling usbh_core.c...
+compiling usb_core.c...
+compiling usb_hcd.c...
+linking...
+Program Size: Code=15160 RO-data=864 RW-data=188 ZI-data=3652  
+FromELF: creating hex file...
+".\STM324xG-EVAL\STM324xG-EVAL_FS.axf" - 0 Error(s), 0 Warning(s).
+Load "F:\\test\\USBOTG_HOST_AOA\\Project\\stm32f4_hostAOA\\MDK-ARM\\STM324xG-EVAL\\STM324xG-EVAL_FS.AXF" 
+Build target 'STM324xG-EVAL_USBH-FS'
+compiling usart.c...
 linking...
 Program Size: Code=15124 RO-data=864 RW-data=188 ZI-data=3652  
 FromELF: creating hex file...
-".\STM324xG-EVAL\STM324xG-EVAL_FS.axf" - 0 Error(s), 10 Warning(s).
+".\STM324xG-EVAL\STM324xG-EVAL_FS.axf" - 0 Error(s), 0 Warning(s).
+Load "F:\\test\\USBOTG_HOST_AOA\\Project\\stm32f4_hostAOA\\MDK-ARM\\STM324xG-EVAL\\STM324xG-EVAL_FS.AXF" 
+Build target 'STM324xG-EVAL_USBH-FS'
+compiling main.c...
+..\src\main.c(156): warning:  #223-D: function "USBH_ADK_ClearCount" declared implicitly
+linking...
+Program Size: Code=15144 RO-data=864 RW-data=188 ZI-data=3652  
+FromELF: creating hex file...
+".\STM324xG-EVAL\STM324xG-EVAL_FS.axf" - 0 Error(s), 1 Warning(s).
+Load "F:\\test\\USBOTG_HOST_AOA\\Project\\stm32f4_hostAOA\\MDK-ARM\\STM324xG-EVAL\\STM324xG-EVAL_FS.AXF" 
+Build target 'STM324xG-EVAL_USBH-FS'
+compiling main.c...
+..\src\main.c(156): warning:  #223-D: function "USBH_ADK_ClearCount" declared implicitly
+linking...
+Program Size: Code=15152 RO-data=864 RW-data=188 ZI-data=3652  
+FromELF: creating hex file...
+".\STM324xG-EVAL\STM324xG-EVAL_FS.axf" - 0 Error(s), 1 Warning(s).
+Load "F:\\test\\USBOTG_HOST_AOA\\Project\\stm32f4_hostAOA\\MDK-ARM\\STM324xG-EVAL\\STM324xG-EVAL_FS.AXF" 
+Build target 'STM324xG-EVAL_USBH-FS'
+compiling usb_hcd.c...
+..\..\..\Libraries\STM32_USB_OTG_Driver\src\usb_hcd.c(252): warning:  #223-D: function "printf" declared implicitly
+linking...
+Program Size: Code=15204 RO-data=864 RW-data=188 ZI-data=3652  
+FromELF: creating hex file...
+".\STM324xG-EVAL\STM324xG-EVAL_FS.axf" - 0 Error(s), 1 Warning(s).
+Load "F:\\test\\USBOTG_HOST_AOA\\Project\\stm32f4_hostAOA\\MDK-ARM\\STM324xG-EVAL\\STM324xG-EVAL_FS.AXF" 
+Build target 'STM324xG-EVAL_USBH-FS'
+compiling usbh_adk_core.c...
+..\src\usbh_adk_core.c(97): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "char *restrict"
+..\src\usbh_adk_core.c(97): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "const char *restrict"
+..\src\usbh_adk_core.c(99): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "char *restrict"
+..\src\usbh_adk_core.c(99): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "const char *restrict"
+..\src\usbh_adk_core.c(101): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "char *restrict"
+..\src\usbh_adk_core.c(101): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "const char *restrict"
+..\src\usbh_adk_core.c(103): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "char *restrict"
+..\src\usbh_adk_core.c(103): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "const char *restrict"
+..\src\usbh_adk_core.c(105): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "char *restrict"
+..\src\usbh_adk_core.c(105): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "const char *restrict"
+..\src\usbh_adk_core.c(107): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "char *restrict"
+..\src\usbh_adk_core.c(107): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "const char *restrict"
+..\src\usbh_adk_core.c(207): warning:  #68-D: integer conversion resulted in a change of sign
+..\src\usbh_adk_core.c(339): warning:  #550-D: variable "HCD_Status" was set but never used
+..\src\usbh_adk_core.c(340): warning:  #550-D: variable "HCD_GXferCnt" was set but never used
+..\src\usbh_adk_core.c(418): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "const char *"
+..\src\usbh_adk_core.c(522): warning:  #550-D: variable "URB_Status" was set but never used
+..\src\usbh_adk_core.c(523): warning:  #550-D: variable "HCD_Status" was set but never used
+..\src\usbh_adk_core.c(524): warning:  #550-D: variable "HCD_GXferCnt" was set but never used
+..\src\usbh_adk_core.c(588): warning:  #223-D: function "HCD_ClearXferCnt" declared implicitly
+linking...
+Program Size: Code=15224 RO-data=864 RW-data=188 ZI-data=3652  
+FromELF: creating hex file...
+".\STM324xG-EVAL\STM324xG-EVAL_FS.axf" - 0 Error(s), 20 Warning(s).
+Load "F:\\test\\USBOTG_HOST_AOA\\Project\\stm32f4_hostAOA\\MDK-ARM\\STM324xG-EVAL\\STM324xG-EVAL_FS.AXF" 
+Build target 'STM324xG-EVAL_USBH-FS'
+compiling usbh_adk_core.c...
+..\src\usbh_adk_core.c(97): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "char *restrict"
+..\src\usbh_adk_core.c(97): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "const char *restrict"
+..\src\usbh_adk_core.c(99): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "char *restrict"
+..\src\usbh_adk_core.c(99): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "const char *restrict"
+..\src\usbh_adk_core.c(101): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "char *restrict"
+..\src\usbh_adk_core.c(101): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "const char *restrict"
+..\src\usbh_adk_core.c(103): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "char *restrict"
+..\src\usbh_adk_core.c(103): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "const char *restrict"
+..\src\usbh_adk_core.c(105): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "char *restrict"
+..\src\usbh_adk_core.c(105): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "const char *restrict"
+..\src\usbh_adk_core.c(107): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "char *restrict"
+..\src\usbh_adk_core.c(107): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "const char *restrict"
+..\src\usbh_adk_core.c(207): warning:  #68-D: integer conversion resulted in a change of sign
+..\src\usbh_adk_core.c(339): warning:  #550-D: variable "HCD_Status" was set but never used
+..\src\usbh_adk_core.c(340): warning:  #550-D: variable "HCD_GXferCnt" was set but never used
+..\src\usbh_adk_core.c(420): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "const char *"
+..\src\usbh_adk_core.c(524): warning:  #550-D: variable "URB_Status" was set but never used
+..\src\usbh_adk_core.c(525): warning:  #550-D: variable "HCD_Status" was set but never used
+..\src\usbh_adk_core.c(526): warning:  #550-D: variable "HCD_GXferCnt" was set but never used
+..\src\usbh_adk_core.c(590): warning:  #223-D: function "HCD_ClearXferCnt" declared implicitly
+linking...
+Program Size: Code=15240 RO-data=864 RW-data=188 ZI-data=3652  
+FromELF: creating hex file...
+".\STM324xG-EVAL\STM324xG-EVAL_FS.axf" - 0 Error(s), 20 Warning(s).
+Load "F:\\test\\USBOTG_HOST_AOA\\Project\\stm32f4_hostAOA\\MDK-ARM\\STM324xG-EVAL\\STM324xG-EVAL_FS.AXF" 
+Build target 'STM324xG-EVAL_USBH-FS'
+compiling usb_core.c...
+compiling usb_hcd.c...
+linking...
+Program Size: Code=15152 RO-data=864 RW-data=188 ZI-data=3652  
+FromELF: creating hex file...
+".\STM324xG-EVAL\STM324xG-EVAL_FS.axf" - 0 Error(s), 0 Warning(s).
+Load "F:\\test\\USBOTG_HOST_AOA\\Project\\stm32f4_hostAOA\\MDK-ARM\\STM324xG-EVAL\\STM324xG-EVAL_FS.AXF" 
+Build target 'STM324xG-EVAL_USBH-FS'
+compiling usbh_adk_core.c...
+..\src\usbh_adk_core.c(97): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "char *restrict"
+..\src\usbh_adk_core.c(97): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "const char *restrict"
+..\src\usbh_adk_core.c(99): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "char *restrict"
+..\src\usbh_adk_core.c(99): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "const char *restrict"
+..\src\usbh_adk_core.c(101): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "char *restrict"
+..\src\usbh_adk_core.c(101): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "const char *restrict"
+..\src\usbh_adk_core.c(103): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "char *restrict"
+..\src\usbh_adk_core.c(103): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "const char *restrict"
+..\src\usbh_adk_core.c(105): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "char *restrict"
+..\src\usbh_adk_core.c(105): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "const char *restrict"
+..\src\usbh_adk_core.c(107): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "char *restrict"
+..\src\usbh_adk_core.c(107): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "const char *restrict"
+..\src\usbh_adk_core.c(207): warning:  #68-D: integer conversion resulted in a change of sign
+..\src\usbh_adk_core.c(338): warning:  #550-D: variable "URB_Status" was set but never used
+..\src\usbh_adk_core.c(339): warning:  #550-D: variable "HCD_Status" was set but never used
+..\src\usbh_adk_core.c(340): warning:  #550-D: variable "HCD_GXferCnt" was set but never used
+..\src\usbh_adk_core.c(420): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "const char *"
+..\src\usbh_adk_core.c(524): warning:  #550-D: variable "URB_Status" was set but never used
+..\src\usbh_adk_core.c(525): warning:  #550-D: variable "HCD_Status" was set but never used
+..\src\usbh_adk_core.c(526): warning:  #550-D: variable "HCD_GXferCnt" was set but never used
+..\src\usbh_adk_core.c(590): warning:  #223-D: function "HCD_ClearXferCnt" declared implicitly
+linking...
+Program Size: Code=15104 RO-data=864 RW-data=188 ZI-data=3652  
+FromELF: creating hex file...
+".\STM324xG-EVAL\STM324xG-EVAL_FS.axf" - 0 Error(s), 21 Warning(s).
+Load "F:\\test\\USBOTG_HOST_AOA\\Project\\stm32f4_hostAOA\\MDK-ARM\\STM324xG-EVAL\\STM324xG-EVAL_FS.AXF" 
+Build target 'STM324xG-EVAL_USBH-FS'
+compiling usbh_adk_core.c...
+..\src\usbh_adk_core.c(97): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "char *restrict"
+..\src\usbh_adk_core.c(97): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "const char *restrict"
+..\src\usbh_adk_core.c(99): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "char *restrict"
+..\src\usbh_adk_core.c(99): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "const char *restrict"
+..\src\usbh_adk_core.c(101): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "char *restrict"
+..\src\usbh_adk_core.c(101): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "const char *restrict"
+..\src\usbh_adk_core.c(103): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "char *restrict"
+..\src\usbh_adk_core.c(103): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "const char *restrict"
+..\src\usbh_adk_core.c(105): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "char *restrict"
+..\src\usbh_adk_core.c(105): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "const char *restrict"
+..\src\usbh_adk_core.c(107): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "char *restrict"
+..\src\usbh_adk_core.c(107): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "const char *restrict"
+..\src\usbh_adk_core.c(207): warning:  #68-D: integer conversion resulted in a change of sign
+..\src\usbh_adk_core.c(339): warning:  #550-D: variable "HCD_Status" was set but never used
+..\src\usbh_adk_core.c(340): warning:  #550-D: variable "HCD_GXferCnt" was set but never used
+..\src\usbh_adk_core.c(419): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "const char *"
+..\src\usbh_adk_core.c(523): warning:  #550-D: variable "URB_Status" was set but never used
+..\src\usbh_adk_core.c(524): warning:  #550-D: variable "HCD_Status" was set but never used
+..\src\usbh_adk_core.c(525): warning:  #550-D: variable "HCD_GXferCnt" was set but never used
+..\src\usbh_adk_core.c(589): warning:  #223-D: function "HCD_ClearXferCnt" declared implicitly
+linking...
+Program Size: Code=15116 RO-data=864 RW-data=188 ZI-data=3652  
+FromELF: creating hex file...
+".\STM324xG-EVAL\STM324xG-EVAL_FS.axf" - 0 Error(s), 20 Warning(s).
+Load "F:\\test\\USBOTG_HOST_AOA\\Project\\stm32f4_hostAOA\\MDK-ARM\\STM324xG-EVAL\\STM324xG-EVAL_FS.AXF" 
+Build target 'STM324xG-EVAL_USBH-FS'
+linking...
+Program Size: Code=15116 RO-data=864 RW-data=188 ZI-data=3652  
+FromELF: creating hex file...
+".\STM324xG-EVAL\STM324xG-EVAL_FS.axf" - 0 Error(s), 0 Warning(s).
+Build target 'STM324xG-EVAL_USBH-FS'
+linking...
+Program Size: Code=15116 RO-data=864 RW-data=188 ZI-data=3652  
+FromELF: creating hex file...
+".\STM324xG-EVAL\STM324xG-EVAL_FS.axf" - 0 Error(s), 0 Warning(s).
+Build target 'STM324xG-EVAL_USBH-FS'
+compiling usbh_adk_core.c...
+..\src\usbh_adk_core.c(97): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "char *restrict"
+..\src\usbh_adk_core.c(97): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "const char *restrict"
+..\src\usbh_adk_core.c(99): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "char *restrict"
+..\src\usbh_adk_core.c(99): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "const char *restrict"
+..\src\usbh_adk_core.c(101): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "char *restrict"
+..\src\usbh_adk_core.c(101): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "const char *restrict"
+..\src\usbh_adk_core.c(103): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "char *restrict"
+..\src\usbh_adk_core.c(103): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "const char *restrict"
+..\src\usbh_adk_core.c(105): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "char *restrict"
+..\src\usbh_adk_core.c(105): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "const char *restrict"
+..\src\usbh_adk_core.c(107): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "char *restrict"
+..\src\usbh_adk_core.c(107): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "const char *restrict"
+..\src\usbh_adk_core.c(207): warning:  #68-D: integer conversion resulted in a change of sign
+..\src\usbh_adk_core.c(339): warning:  #550-D: variable "HCD_Status" was set but never used
+..\src\usbh_adk_core.c(340): warning:  #550-D: variable "HCD_GXferCnt" was set but never used
+..\src\usbh_adk_core.c(419): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "const char *"
+..\src\usbh_adk_core.c(523): warning:  #550-D: variable "URB_Status" was set but never used
+..\src\usbh_adk_core.c(524): warning:  #550-D: variable "HCD_Status" was set but never used
+..\src\usbh_adk_core.c(525): warning:  #550-D: variable "HCD_GXferCnt" was set but never used
+..\src\usbh_adk_core.c(589): warning:  #223-D: function "HCD_ClearXferCnt" declared implicitly
+linking...
+Program Size: Code=15132 RO-data=864 RW-data=188 ZI-data=3652  
+FromELF: creating hex file...
+".\STM324xG-EVAL\STM324xG-EVAL_FS.axf" - 0 Error(s), 20 Warning(s).
+Load "F:\\test\\USBOTG_HOST_AOA\\Project\\stm32f4_hostAOA\\MDK-ARM\\STM324xG-EVAL\\STM324xG-EVAL_FS.AXF" 
+Build target 'STM324xG-EVAL_USBH-FS'
+compiling usbh_adk_core.c...
+..\src\usbh_adk_core.c(97): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "char *restrict"
+..\src\usbh_adk_core.c(97): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "const char *restrict"
+..\src\usbh_adk_core.c(99): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "char *restrict"
+..\src\usbh_adk_core.c(99): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "const char *restrict"
+..\src\usbh_adk_core.c(101): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "char *restrict"
+..\src\usbh_adk_core.c(101): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "const char *restrict"
+..\src\usbh_adk_core.c(103): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "char *restrict"
+..\src\usbh_adk_core.c(103): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "const char *restrict"
+..\src\usbh_adk_core.c(105): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "char *restrict"
+..\src\usbh_adk_core.c(105): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "const char *restrict"
+..\src\usbh_adk_core.c(107): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "char *restrict"
+..\src\usbh_adk_core.c(107): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "const char *restrict"
+..\src\usbh_adk_core.c(210): warning:  #68-D: integer conversion resulted in a change of sign
+..\src\usbh_adk_core.c(342): warning:  #550-D: variable "HCD_Status" was set but never used
+..\src\usbh_adk_core.c(343): warning:  #550-D: variable "HCD_GXferCnt" was set but never used
+..\src\usbh_adk_core.c(422): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "const char *"
+..\src\usbh_adk_core.c(526): warning:  #550-D: variable "URB_Status" was set but never used
+..\src\usbh_adk_core.c(527): warning:  #550-D: variable "HCD_Status" was set but never used
+..\src\usbh_adk_core.c(528): warning:  #550-D: variable "HCD_GXferCnt" was set but never used
+..\src\usbh_adk_core.c(592): warning:  #223-D: function "HCD_ClearXferCnt" declared implicitly
+linking...
+Program Size: Code=15140 RO-data=864 RW-data=188 ZI-data=3652  
+FromELF: creating hex file...
+".\STM324xG-EVAL\STM324xG-EVAL_FS.axf" - 0 Error(s), 20 Warning(s).
+Load "F:\\test\\USBOTG_HOST_AOA\\Project\\stm32f4_hostAOA\\MDK-ARM\\STM324xG-EVAL\\STM324xG-EVAL_FS.AXF" 
+Build target 'STM324xG-EVAL_USBH-FS'
+compiling main.c...
+..\src\main.c(156): warning:  #223-D: function "USBH_ADK_ClearCount" declared implicitly
+..\src\main.c(107): warning:  #177-D: variable "test" was declared but never referenced
+linking...
+Program Size: Code=15080 RO-data=864 RW-data=184 ZI-data=3656  
+FromELF: creating hex file...
+".\STM324xG-EVAL\STM324xG-EVAL_FS.axf" - 0 Error(s), 2 Warning(s).

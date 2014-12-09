@@ -28,6 +28,7 @@
 /* Includes ------------------------------------------------------------------*/
 #include "usb_core.h"
 #include "usb_bsp.h"
+#include "stdio.h"
 
 
 /** @addtogroup USB_OTG_DRIVER
@@ -982,7 +983,7 @@ USB_OTG_STS USB_OTG_HC_StartXfer(USB_OTG_CORE_HANDLE *pdev , uint8_t hc_num)
   hcchar.d32 = 0;
   intmsk.d32 = 0;
   
- 
+//       printf("hachar is enable\r\n");
   /* Compute the expected number of packets associated to the transfer */
   if (pdev->host.hc[hc_num].xfer_len > 0)
   {
@@ -1025,6 +1026,7 @@ USB_OTG_STS USB_OTG_HC_StartXfer(USB_OTG_CORE_HANDLE *pdev , uint8_t hc_num)
   hcchar.b.chen = 1;
   hcchar.b.chdis = 0;
   USB_OTG_WRITE_REG32(&pdev->regs.HC_REGS[hc_num]->HCCHAR, hcchar.d32);
+ 
   
   if (pdev->cfg.dma_enable == 0) /* Slave mode */
   {  
@@ -1069,7 +1071,7 @@ USB_OTG_STS USB_OTG_HC_StartXfer(USB_OTG_CORE_HANDLE *pdev , uint8_t hc_num)
       default:
         break;
       }
-      
+     //printf("write packet\r\n"); 
       /* Write packet into the Tx FIFO. */
       USB_OTG_WritePacket(pdev, 
                           pdev->host.hc[hc_num].xfer_buff , 

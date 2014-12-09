@@ -162,16 +162,18 @@ int main(void)
 			printf("\r\n");
 		}
   }
-//  USB_OTG_BSP_mDelay(10);
+//  USB_OTG_BSP_mDelay(1);
 
- //  USBH_ADK_write(&USB_OTG_Core, "something ",1);   
-   
-   test++;
-   if(test >= 10000)
-   {
-   		test = 0;
-   		//printf("device is working\r\n");
-   } 
+//   USBH_ADK_write(&USB_OTG_Core, "something ",1);   
+//   if(USB_Host.gState == HOST_CLASS)
+//   {
+//	   test++;
+//	   if(test >= 1000)
+//	   {
+//	   		test = 0;
+//	   		printf("device is working\r\n");
+//	   } 
+//   }
   }
 }
 

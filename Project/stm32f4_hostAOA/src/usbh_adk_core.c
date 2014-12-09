@@ -146,6 +146,9 @@ void USBH_ADK_InterfaceDeInit ( USB_OTG_CORE_HANDLE *pdev, void *phost)
 #endif
 	ADK_Machine.initstate = ADK_INIT_SETUP;
 
+
+	pdev->host.URB_State[ADK_Machine.hc_num_in] =   URB_IDLE; //范添加，，我恨死这个标记了，害我找了N天，纠结了N天
+
 	/* Switch to accessory mode,  Re-enumeration */
 	if(ADK_Machine.state == ADK_INITIALIZING)
 	{
@@ -365,8 +368,10 @@ static USBH_Status USBH_ADK_Handle(USB_OTG_CORE_HANDLE *pdev, void   *phost)
 			HCD_Status = HCD_GetHCState(pdev , ADK_Machine.hc_num_in);
 			HCD_GXferCnt = HCD_GetXferCnt(pdev , ADK_Machine.hc_num_in);
 			if( URB_Status > URB_DONE){
+				printf("test");
 				break;
 			}
+		
 			USBH_BulkReceiveData(pdev, ADK_Machine.inbuff, USBH_ADK_DATA_SIZE, ADK_Machine.hc_num_in);
 			ADK_Machine.state = ADK_IDLE;
 			break;
