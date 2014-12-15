@@ -256,17 +256,10 @@ void USBH_Process(USB_OTG_CORE_HANDLE *pdev , USBH_HOST *phost)
     break;
    
   case HOST_DEV_ATTACHED :
-    
-//	printf("HOST_DEV_ATTACHED state reset device");
-			
 
     phost->usr_cb->DeviceAttached();
     phost->Control.hc_num_out = USBH_Alloc_Channel(pdev, 0x00);
     phost->Control.hc_num_in = USBH_Alloc_Channel(pdev, 0x80);  
-    
-
-//	printf("GRSTCTL: %X\r\n", USB_OTG_READ_REG32(&pdev->regs.GREGS->GRSTCTL));
-//	USB_OTG_BSP_mDelay(10);
   
     /* Reset USB Device */
     if ( HCD_ResetPort(pdev) == 0)
@@ -342,9 +335,7 @@ void USBH_Process(USB_OTG_CORE_HANDLE *pdev , USBH_HOST *phost)
      {
 	   printf("HOST_CLASS_REQUEST state : contol requests is ok and host class is enter\r\n");
        phost->gState  = HOST_CLASS;
-//	   USB_OTG_WRITE_REG32(&pdev->regs.GREGS->GRXSTSR, 0xf0003);
-//	   USB_OTG_WRITE_REG32(&pdev->regs.GREGS->GRXSTSP, 0xf0003);
-//	   USB_OTG_WRITE_REG32(&pdev->regs.GREGS->HNPTXSTS,0X8080060);
+
 
 #if 0
 //	   USB_OTG_WRITE_REG32(&pdev->regs.HREGS->HFNUM,0X43FD039B);
@@ -358,8 +349,6 @@ void USBH_Process(USB_OTG_CORE_HANDLE *pdev , USBH_HOST *phost)
 	   printfpdev_reg(pdev);
 
 #endif	   
-
-	   // printf("GINTSTS :%X\r\n",(pdev->regs.GREGS->GINTSTS));
      }  
      
      else
@@ -377,6 +366,7 @@ void USBH_Process(USB_OTG_CORE_HANDLE *pdev , USBH_HOST *phost)
     
   case HOST_CTRL_XFER:
     /* process control transfer state machine */
+	printf("HOST_CTRL_XFER\r\n");
     USBH_HandleControl(pdev, phost);    
     break;
     
@@ -402,16 +392,6 @@ void USBH_Process(USB_OTG_CORE_HANDLE *pdev , USBH_HOST *phost)
     phost->class_cb->DeInit(pdev, &phost->device_prop); 
     USBH_DeAllocate_AllChannel(pdev);  
     phost->gState = HOST_IDLE;
-
-//	USB_OTG_WRITE_REG32(pdev->regs.HPRT0, USB_OTG_READ_REG32(pdev->regs.HPRT0) | 1<<8 );
-
-//	USB_OTG_WRITE_REG32(&pdev->regs.GREGS->GRSTCTL, USB_OTG_READ_REG32(&pdev->regs.GREGS->GRSTCTL) | 0x7 );
-//	USB_OTG_BSP_mDelay(100);
-//	printf("diconnect is arrived\r\n");
-//	RCC_AHB2PeriphResetCmd(RCC_AHB2Periph_OTG_FS, ENABLE);
-//	 reset_usb();
-//	USB_OTG_CoreInit(pdev);
-//	reset_usb();
 
 // NVIC_SystemReset();
 

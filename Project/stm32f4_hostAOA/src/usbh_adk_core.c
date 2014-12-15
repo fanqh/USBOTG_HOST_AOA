@@ -368,7 +368,7 @@ static USBH_Status USBH_ADK_Handle(USB_OTG_CORE_HANDLE *pdev, void   *phost)
 			HCD_Status = HCD_GetHCState(pdev , ADK_Machine.hc_num_in);
 			HCD_GXferCnt = HCD_GetXferCnt(pdev , ADK_Machine.hc_num_in);
 			if( URB_Status > URB_DONE){
-				printf("test");
+				printf("URB_Status>URB_DONE\r\n");
 				break;
 			}
 		

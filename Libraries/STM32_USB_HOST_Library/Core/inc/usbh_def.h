@@ -202,7 +202,7 @@ USB_Setup_TypeDef;
 typedef  struct  _DescHeader 
 {
     uint8_t  bLength;       
-    uint8_t  bDescriptorType;
+    uint8_t  bDescriptorType;														   
 } 
 USBH_DescHeader_t;
 

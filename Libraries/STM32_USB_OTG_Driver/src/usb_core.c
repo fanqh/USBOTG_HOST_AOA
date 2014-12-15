@@ -878,7 +878,7 @@ USB_OTG_STS USB_OTG_HC_Init(USB_OTG_CORE_HANDLE *pdev , uint8_t hc_num)
   
   if (pdev->cfg.dma_enable == 1)
   {
-    hcintmsk.b.ahberr = 1;
+    hcintmsk.b.ahberr = 1;	   //DMA错误标记清除
   }
   
   switch (pdev->host.hc[hc_num].ep_type) 
@@ -936,11 +936,11 @@ USB_OTG_STS USB_OTG_HC_Init(USB_OTG_CORE_HANDLE *pdev , uint8_t hc_num)
   
   /* Enable the top level host channel interrupt. */
   intr_enable = (1 << hc_num);
-  USB_OTG_MODIFY_REG32(&pdev->regs.HREGS->HAINTMSK, 0, intr_enable);
+  USB_OTG_MODIFY_REG32(&pdev->regs.HREGS->HAINTMSK, 0, intr_enable);   //通道中断使能
   
   /* Make sure host channel interrupts are enabled. */
   gintmsk.b.hcintr = 1;
-  USB_OTG_MODIFY_REG32(&pdev->regs.GREGS->GINTMSK, 0, gintmsk.d32);
+  USB_OTG_MODIFY_REG32(&pdev->regs.GREGS->GINTMSK, 0, gintmsk.d32);		
   
   /* Program the HCCHAR register */
   hcchar.d32 = 0;

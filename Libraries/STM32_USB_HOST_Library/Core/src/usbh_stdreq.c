@@ -27,7 +27,8 @@
 /* Includes ------------------------------------------------------------------*/
 
 #include "usbh_ioreq.h"
-#include "usbh_stdreq.h"
+#include "usbh_stdreq.h"  
+#include "stdio.h"
 
 /** @addtogroup USBH_LIB
 * @{
@@ -132,6 +133,8 @@ USBH_Status USBH_Get_DevDesc(USB_OTG_CORE_HANDLE *pdev,
                                   pdev->host.Rx_Buffer,
                                   length)) == USBH_OK)
   {
+  	
+	printf("********ok ok ok**************");
     /* Commands successfully sent and Response Received */       
     USBH_ParseDevDesc(&phost->device_prop.Dev_Desc, pdev->host.Rx_Buffer, length);
   }
@@ -244,7 +247,8 @@ USBH_Status USBH_GetDescriptor(USB_OTG_CORE_HANDLE *pdev,
   {
     phost->Control.setup.b.wIndex.w = 0;
   }
-  phost->Control.setup.b.wLength.w = length;           
+  phost->Control.setup.b.wLength.w = length; 
+            
   return USBH_CtlReq(pdev, phost, buff , length );     
 }
 
@@ -364,6 +368,7 @@ static void  USBH_ParseDevDesc (USBH_DevDesc_TypeDef* dev_desc,
                                 uint8_t *buf, 
                                 uint16_t length)
 {
+
   dev_desc->bLength            = *(uint8_t  *) (buf +  0);
   dev_desc->bDescriptorType    = *(uint8_t  *) (buf +  1);
   dev_desc->bcdUSB             = LE16 (buf +  2);

@@ -49,7 +49,7 @@
 ### ADS-LD Output File: '.\STM324xG-EVAL\STM324xG-EVAL_FS.axf'
 ### ADS-LD Command File: '.\STM324xG-EVAL\STM324xG-EVAL_FS.lnp'
 ### Checking for dirty Components...
-### Creating CmdFile '.\STM324xG-EVAL\STM324xG-EVAL_FS.lnp', Handle=0x000008B4
+### Creating CmdFile '.\STM324xG-EVAL\STM324xG-EVAL_FS.lnp', Handle=0x0000099C
 ### Writing '.lnp' file
 ### ADS-LD Command file '.\STM324xG-EVAL\STM324xG-EVAL_FS.lnp' is ready.
 ### ADS-LD: About to start ADS-LD Thread.

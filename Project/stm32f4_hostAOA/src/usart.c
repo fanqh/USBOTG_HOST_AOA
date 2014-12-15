@@ -26,15 +26,16 @@ void USART_Configuration(void)
   RCC_AHB1PeriphClockCmd(Open_USART_TX_GPIO_CLK,ENABLE);
   RCC_AHB1PeriphClockCmd(Open_USART_RX_GPIO_CLK,ENABLE);
 
-  RCC_APB2PeriphClockCmd(Open_USART_CLK,ENABLE);
+  //uart1 use APB2,uart2 use APB1
+  RCC_APB1PeriphClockCmd(Open_USART_CLK,ENABLE);
 
 
   GPIO_PinAFConfig(Open_USART_TX_GPIO_PORT, Open_USART_TX_SOURCE, Open_USART_TX_AF);
   GPIO_PinAFConfig(Open_USART_RX_GPIO_PORT, Open_USART_RX_SOURCE, Open_USART_RX_AF);
 
   /*
-  *  Open_USART_TX -> PA9 , Open_USART_RX -PA10
-  */
+//  *  Open_USART_TX -> PA9 , Open_USART_RX -PA10
+//  */
   GPIO_InitStructure.GPIO_Pin = Open_USART_TX_PIN;
   GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AF;
   GPIO_InitStructure.GPIO_OType = GPIO_OType_PP;
@@ -47,7 +48,7 @@ void USART_Configuration(void)
   GPIO_InitStructure.GPIO_OType = GPIO_OType_OD;
   GPIO_InitStructure.GPIO_PuPd = GPIO_PuPd_NOPULL;
   GPIO_Init(Open_USART_RX_GPIO_PORT, &GPIO_InitStructure);
-
+#if 1
 /*
    		 USARTx configured as follow:
          - BaudRate = 115200 baud  
@@ -71,6 +72,8 @@ void USART_Configuration(void)
 
   USART_Cmd(Open_USART, ENABLE);
   //USART_NVIC_Config();
+
+#endif 
 
 }
 

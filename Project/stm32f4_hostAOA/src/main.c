@@ -122,9 +122,11 @@ int main(void)
   
   /* Init Host Library */
 
-  USART_Configuration();
-  
+ USART_Configuration();
 
+  printf("uart is working\r\n");
+  
+#if 1
 
   USBH_Init(&USB_OTG_Core, 
 #ifdef USE_USB_OTG_FS  
@@ -140,6 +142,8 @@ int main(void)
  USBH_ADK_Init("actnova", "HelloADK", "HelloADK for for STM32F4", "1.0", "www.actnova.com",  "1234567");
 //USBH_ADK_Init("ammlab.org", "HelloADK", "HelloADK for GR-SAKURA for STM32F4", "1.0", "https://play.google.com/store/apps/details?id=org.ammlab.android.helloadk",  "1234567");		
 //   USART_Configuration();
+
+#endif
   while (1)
   {
  
@@ -162,16 +166,17 @@ int main(void)
 			printf("\r\n");
 		}
   }
-//  USB_OTG_BSP_mDelay(1);
-
-//   USBH_ADK_write(&USB_OTG_Core, "something ",1);   
-//   if(USB_Host.gState == HOST_CLASS)
+//  USB_OTG_BSP_uDelay(1);
+//
+//   
+//   if(USBH_ADK_getStatus() == ADK_IDLE)
 //   {
 //	   test++;
-//	   if(test >= 1000)
+//	   if(test >= 10000)
 //	   {
 //	   		test = 0;
-//	   		printf("device is working\r\n");
+//			USBH_ADK_write(&USB_OTG_Core, "something ",1);  
+//	   		printf("write\r\n");
 //	   } 
 //   }
   }
